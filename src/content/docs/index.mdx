@@ -1,0 +1,22 @@
+---
+title: "El Ágora (Planta 0)"
+description: "Punto de entrada a la Mediateca Digital ISAN"
+template: splash
+hero:
+  tagline: "Bienvenido a la Mediateca de Sendai Digital. El conocimiento fluye libremente."
+  image:
+    file: ../../assets/houston.webp
+  actions:
+    - text: Entrar a la Biblioteca
+      link: /investigacion/inicio/
+      icon: right-arrow
+      variant: primary
+---
+
+import StreamingModule from '../../components/StreamingModule.astro';
+import MediathequeFilters from '../../components/MediathequeFilters.astro';
+import NewsletterSubscription from '../../components/NewsletterSubscription.astro';
+
+<StreamingModule />
+<MediathequeFilters />
+<NewsletterSubscription />
