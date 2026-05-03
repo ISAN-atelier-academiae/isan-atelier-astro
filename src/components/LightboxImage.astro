@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: string;
+  alt: string;
+  caption: string;
+  metadata?: string;
+}
+
+const { src, alt, caption, metadata } = Astro.props;
+---
+<figure class="lightbox-item">
+  <img src={src} alt={alt} loading="lazy" />
+  <figcaption class="lightbox-caption">
+    <strong>{caption}</strong>
+    {metadata && <span class="metadata"><br/><em>{metadata}</em></span>}
+  </figcaption>
+</figure>
+
+<style>
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+  .metadata {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+</style>

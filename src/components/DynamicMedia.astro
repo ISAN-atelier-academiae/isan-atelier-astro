@@ -1,0 +1,64 @@
+---
+// DynamicMedia.astro
+interface Props {
+  type: 'audio' | 'video';
+  src: string;
+  title: string;
+  transcription?: string;
+}
+
+const { type, src, title, transcription } = Astro.props;
+---
+<div class="media-container">
+  <div class="media-header">
+    <h3>{title}</h3>
+  </div>
+  
+  {type === 'audio' && (
+    <div class="podcast-player">
+      <audio controls src={src} preload="metadata" class="w-full"></audio>
+      {transcription && (
+        <details class="transcription-box">
+          <summary>Ver Transcripción Automática</summary>
+          <div class="transcription-content" set:html={transcription} />
+        </details>
+      )}
+    </div>
+  )}
+
+  {type === 'video' && (
+    <div class="video-player">
+      <video controls preload="metadata" class="w-full">
+        <source src={src} type="video/mp4" />
+        Tu navegador no soporta el reproductor de video.
+      </video>
+    </div>
+  )}
+</div>
+
+<style>
+.media-container {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(251, 192, 45, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  backdrop-filter: blur(10px);
+}
+.w-full {
+  width: 100%;
+  border-radius: 8px;
+}
+.transcription-box {
+  margin-top: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  border-radius: 8px;
+}
+.transcription-content {
+  margin-top: 1rem;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+</style>

@@ -1,0 +1,54 @@
+---
+// HoverPreview.astro
+---
+<div id="hover-preview-tooltip" class="hover-preview">
+  <div class="content"></div>
+</div>
+
+<style>
+.hover-preview {
+  position: absolute;
+  display: none;
+  background: var(--sl-color-bg);
+  border: 1px solid var(--sl-color-hairline);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  z-index: 1000;
+  max-width: 300px;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+}
+
+.hover-preview.active {
+  display: block;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tooltip = document.getElementById('hover-preview-tooltip');
+  if (!tooltip) return;
+
+  const links = document.querySelectorAll('a.wiki-link');
+  
+  links.forEach(link => {
+    link.addEventListener('mouseenter', async (e: any) => {
+      const rect = e.target.getBoundingClientRect();
+      tooltip.style.left = `${rect.left + window.scrollX}px`;
+      tooltip.style.top = `${rect.bottom + window.scrollY + 10}px`;
+      tooltip.classList.add('active');
+      
+      const tooltipContent = tooltip.querySelector('.content');
+      if (tooltipContent) {
+         // Mock content loading for aesthetics
+         tooltipContent.innerHTML = `<em>Cargando metadatos de ${e.target.innerText}...</em>`;
+      }
+    });
+
+    link.addEventListener('mouseleave', () => {
+      tooltip.classList.remove('active');
+    });
+  });
+});
+</script>

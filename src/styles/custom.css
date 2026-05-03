@@ -1,0 +1,78 @@
+:root {
+  /* Modern Sans-serif for Technical UI */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  /* Elegant Serif for Scientific Texts */
+  --font-serif: 'Source Serif Pro', 'Merriweather', 'Georgia', serif;
+  
+  --sl-font: var(--font-sans);
+  
+  /* Accent colors */
+  --sl-color-accent-high: #ffeb3b;
+  --sl-color-accent: #fbc02d;
+  --sl-color-accent-low: #f57f17;
+}
+
+/* Base formatting for articles */
+.sl-markdown-content {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* Technical headings and UI in Sans-serif */
+h1, h2, h3, h4, h5, h6, .sl-nav, .sl-sidebar {
+  font-family: var(--font-sans);
+}
+
+/* Wikilink aesthetics with Hover Previews */
+a.wiki-link {
+  text-decoration: none;
+  color: var(--sl-color-accent);
+  border-bottom: 1px dotted var(--sl-color-accent);
+  transition: all 0.2s ease-in-out;
+  position: relative;
+}
+
+a.wiki-link:hover {
+  background-color: rgba(251, 192, 45, 0.1);
+  border-bottom-style: solid;
+}
+
+/* Lightbox Image specific styles */
+.lightbox-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.lightbox-item {
+  position: relative;
+  cursor: zoom-in;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.lightbox-item:hover {
+  transform: scale(1.02);
+}
+
+.lightbox-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.lightbox-item:hover .lightbox-caption {
+  transform: translateY(0);
+}

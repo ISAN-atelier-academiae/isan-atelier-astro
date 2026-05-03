@@ -1,0 +1,70 @@
+---
+// MediathequeFilters.astro
+// Sistema de búsqueda visual por "Tipo de Nutriente"
+---
+<div class="mediatheque-filters">
+  <h3>Filtros de Nutrición Intelectual</h3>
+  <div class="filter-buttons">
+    <button class="filter-btn active" data-type="all">Todos los Nutrientes</button>
+    <button class="filter-btn" data-type="text">📝 Textos Científicos</button>
+    <button class="filter-btn" data-type="image">🖼️ Imágenes del Atelier</button>
+    <button class="filter-btn" data-type="sound">🎧 Podcasts y Sonido</button>
+    <button class="filter-btn" data-type="data">📊 Datos / Scripts</button>
+  </div>
+</div>
+
+<style>
+.mediatheque-filters {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+}
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.filter-btn {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--font-sans);
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--sl-color-accent);
+  color: black;
+  border-color: var(--sl-color-accent);
+}
+</style>
+
+<script>
+// Lógica de filtrado visual
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('.filter-btn');
+  // Se asume que el contenido de la Mediateca tendrá atributos data-nutrient-type
+  
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      const type = btn.getAttribute('data-type');
+      const items = document.querySelectorAll('.nutrient-item');
+      
+      items.forEach((item: any) => {
+        if (type === 'all' || item.getAttribute('data-nutrient-type') === type) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+});
+</script>
