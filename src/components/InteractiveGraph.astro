@@ -1,100 +1,1335 @@
 ---
 // InteractiveGraph.astro
+// Vitruvian Column & Digital Brain Dashboard for ISAN Atelier Academiae
 ---
-<div id="graph-container" class="graph-container"></div>
+<div class="digital-brain-wrapper glass-panel">
+  <div class="brain-header">
+    <div class="header-accent"></div>
+    <div class="title-area">
+      <h3>🏛️ Panel de Control: Columna de Vitruvio</h3>
+      <p class="subtitle">Ecosistema Cognitivo y Sincronización Neuronal Axial en Tiempo Real</p>
+    </div>
+    
+    <div class="search-box">
+      <input type="text" id="node-search" placeholder="🔍 Buscar en la red (ej. Esfinge, Bitácora)..." />
+      <span class="search-clear" id="search-clear" style="display: none;">&times;</span>
+    </div>
+  </div>
+
+  <div class="digital-brain-grid">
+    <!-- Left Column: D3 Graph Viewport -->
+    <div class="graph-viewport-container">
+      <div id="graph-container" class="graph-container"></div>
+      
+      <!-- Floating Zoom Controls -->
+      <div class="graph-controls glass-panel">
+        <button id="zoom-in" title="Acercar">+</button>
+        <button id="zoom-out" title="Alejar">-</button>
+        <button id="zoom-reset" title="Restablecer Vista">⟲</button>
+      </div>
+    </div>
+
+    <!-- Right Column: Vitruvian Column Console -->
+    <div class="vitruvian-console">
+      
+      <!-- Section A: Node Data Sheet -->
+      <div class="console-section node-details-section">
+        <h4>📋 Ficha Metrológica</h4>
+        <div class="node-details-container">
+          <div class="details-placeholder" id="details-placeholder">
+            <div class="pulse-dot"></div>
+            <p>Selecciona un nodo de la red para decodificar su metadato y comprobar su integridad.</p>
+          </div>
+          <div class="details-content" id="details-content" style="display: none;">
+            <div class="tag-row">
+              <span class="node-tag" id="details-category">CATEGORÍA</span>
+              <span class="crypto-badge">
+                <span class="badge-dot"></span> VERIFIED
+              </span>
+            </div>
+            <h4 id="details-title">Título del Nodo</h4>
+            <p id="details-desc">Descripción del nodo en el búnker.</p>
+            <div class="details-footer">
+              <a href="#" id="details-link" class="details-btn" target="_blank">Explorar Documento &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section B: The Vitruvian Column (Linguistic Fluctuations) -->
+      <div class="console-section vitruvian-column-section">
+        <h4>🧬 Columna de Vitruvio (Ergonomía)</h4>
+        <p class="section-subtitle">Procesamiento visual periférico de modos lingüísticos</p>
+        
+        <div class="vitruvian-bar-container">
+          <div class="bar-label-row">
+            <span class="bar-name">🎭 Modo Poético</span>
+            <span class="bar-value" id="poetic-val">50%</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill poetic-bar" id="poetic-bar" style="width: 50%;"></div>
+          </div>
+        </div>
+
+        <div class="vitruvian-bar-container">
+          <div class="bar-label-row">
+            <span class="bar-name">🐍 Modo Hermético</span>
+            <span class="bar-value" id="hermetic-val">60%</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill hermetic-bar" id="hermetic-bar" style="width: 60%;"></div>
+          </div>
+        </div>
+
+        <div class="vitruvian-bar-container">
+          <div class="bar-label-row">
+            <span class="bar-name">💻 Modo Técnico</span>
+            <span class="bar-value" id="technical-val">75%</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill technical-bar" id="technical-bar" style="width: 75%;"></div>
+          </div>
+        </div>
+
+        <div class="vitruvian-bar-container">
+          <div class="bar-label-row">
+            <span class="bar-name">📖 Modo Narrativo</span>
+            <span class="bar-value" id="narrative-val">45%</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill narrative-bar" id="narrative-bar" style="width: 45%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section C: Cryptographic Integrity Box -->
+      <div class="console-section integrity-section">
+        <h4>🔑 Consola de Integridad S.S.</h4>
+        <div class="hash-box">
+          <div class="hash-label">HASH INTEGRIDAD SHA-256 (hash_m7)</div>
+          <div class="hash-value" id="integrity-hash">a68d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d18f4</div>
+        </div>
+        <div class="integrity-footer">
+          <span class="standard-label">Estándar: <strong>ISAN-2026</strong></span>
+          <span class="status-label">Resonancia: <strong id="resonancia-val">1.57714881</strong></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <style>
+.digital-brain-wrapper {
+  margin: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--color-glass-border);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+  border-radius: 12px;
+}
+
+.brain-header {
+  padding: 1.25rem 2rem;
+  background: linear-gradient(to right, rgba(0, 242, 255, 0.05) 0%, transparent 100%);
+  border-bottom: 1px solid var(--color-glass-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  position: relative;
+}
+
+.header-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 180px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-digital-cyan), var(--color-neural-red));
+}
+
+.title-area h3 {
+  margin: 0;
+  font-size: 1.35rem;
+  color: white;
+  letter-spacing: -0.5px;
+  text-shadow: 0 0 15px rgba(0, 242, 255, 0.25);
+  font-family: var(--font-sans);
+}
+
+.subtitle {
+  margin: 0.2rem 0 0 0;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.search-box {
+  position: relative;
+  max-width: 280px;
+  width: 100%;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.55rem 2rem 0.55rem 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--color-glass-border);
+  border-radius: 20px;
+  color: white;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: var(--color-digital-cyan);
+  box-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.search-clear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+/* Grid Layout for Vitruvian Dashboard */
+.digital-brain-grid {
+  display: grid;
+  grid-template-columns: 1.7fr 1.3fr;
+  background: radial-gradient(circle at center, #050811 0%, #020307 100%);
+}
+
+@media (max-width: 1024px) {
+  .digital-brain-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.graph-viewport-container {
+  position: relative;
+  width: 100%;
+  height: 580px;
+  border-right: 1px solid var(--color-glass-border);
+}
+
+@media (max-width: 1024px) {
+  .graph-viewport-container {
+    height: 460px;
+    border-right: none;
+    border-bottom: 1px solid var(--color-glass-border);
+  }
+}
+
 .graph-container {
   width: 100%;
-  height: 400px;
-  background: rgba(20, 20, 20, 0.5);
+  height: 100%;
+  cursor: grab;
+}
+
+.graph-container:active {
+  cursor: grabbing;
+}
+
+/* Floating Zoom Controls */
+.graph-controls {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+  border-radius: 8px;
+  z-index: 10;
+  background: rgba(4, 6, 12, 0.85);
+  border: 1px solid var(--color-glass-border);
+}
+
+.graph-controls button {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+  border-radius: 6px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.graph-controls button:hover {
+  background: rgba(0, 242, 255, 0.2);
+  border-color: var(--color-digital-cyan);
+  color: var(--color-digital-cyan);
+  box-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+}
+
+/* Vitruvian Sidebar Console */
+.vitruvian-console {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  background: rgba(4, 6, 12, 0.45);
+  backdrop-filter: blur(20px);
+  max-height: 580px;
+  overflow-y: auto;
+  border-left: 1px solid rgba(255,255,255,0.02);
+}
+
+@media (max-width: 1024px) {
+  .vitruvian-console {
+    max-height: none;
+    border-left: none;
+  }
+}
+
+.console-section {
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.console-section:hover {
+  background: rgba(255, 255, 255, 0.025);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.console-section h4 {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.85rem;
+  color: white;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-family: var(--font-sans);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 0.4rem;
+  font-weight: 700;
+}
+
+.section-subtitle {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin: -0.5rem 0 1rem 0;
+}
+
+/* Ficha de Nodo details container */
+.node-details-container {
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.details-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.8rem;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-digital-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--color-digital-cyan);
+  animation: pulse-dot 1.5s infinite ease-in-out;
+}
+
+.tag-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.node-tag {
+  background: rgba(0, 242, 255, 0.07);
+  border: 1px solid rgba(0, 242, 255, 0.15);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  color: var(--color-digital-cyan);
+}
+
+.crypto-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: #10b981;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.badge-dot {
+  width: 5px;
+  height: 5px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #10b981;
+}
+
+#details-title {
+  margin: 0.2rem 0 0.4rem 0;
+  font-size: 1.1rem;
+  color: white;
+  font-weight: bold;
+  letter-spacing: -0.3px;
+  line-height: 1.3;
+}
+
+#details-desc {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0 0 1rem 0;
+}
+
+.details-btn {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: linear-gradient(135deg, rgba(0, 242, 255, 0.2) 0%, rgba(0, 242, 255, 0.05) 100%);
+  border: 1px solid var(--color-digital-cyan);
+  color: white !important;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.details-btn:hover {
+  background: var(--color-digital-cyan);
+  color: black !important;
+  box-shadow: 0 0 12px rgba(0, 242, 255, 0.4);
+}
+
+/* Vitruvian Neon Chromatic Bars */
+.vitruvian-bar-container {
+  margin-bottom: 0.75rem;
+}
+
+.vitruvian-bar-container:last-child {
+  margin-bottom: 0;
+}
+
+.bar-label-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  margin-bottom: 0.25rem;
+}
+
+.bar-name {
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 500;
+}
+
+.bar-value {
+  font-family: monospace;
+  font-weight: bold;
+  color: var(--color-digital-cyan);
+}
+
+.bar-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 3px;
   overflow: hidden;
-  margin: 2rem 0;
+  position: relative;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.poetic-bar {
+  background: linear-gradient(90deg, #ec4899, #f43f5e);
+  box-shadow: 0 0 6px rgba(244, 63, 94, 0.5);
+}
+
+.hermetic-bar {
+  background: linear-gradient(90deg, #6366f1, #a855f7);
+  box-shadow: 0 0 6px rgba(168, 85, 247, 0.5);
+}
+
+.technical-bar {
+  background: linear-gradient(90deg, #00f2ff, #10b981);
+  box-shadow: 0 0 6px rgba(0, 242, 255, 0.5);
+}
+
+.narrative-bar {
+  background: linear-gradient(90deg, #fbbf24, #f97316);
+  box-shadow: 0 0 6px rgba(251, 191, 36, 0.5);
+}
+
+/* Crypto Integrity Box */
+.hash-box {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.hash-label {
+  font-size: 0.58rem;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.5px;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+}
+
+.hash-value {
+  font-family: monospace;
+  font-size: 0.68rem;
+  color: #10b981;
+  word-break: break-all;
+  letter-spacing: -0.2px;
+  line-height: 1.25;
+}
+
+.integrity-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.integrity-footer strong {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+@keyframes pulse-dot {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 12px var(--color-digital-cyan); }
+  100% { transform: scale(0.9); opacity: 0.6; }
 }
 </style>
 
 <script>
 import * as d3 from 'd3';
 
-// Mock data representing Obsidian Graph
-const data = {
+// Neural net mapping representing complete sovereign knowledge ecosystem
+// Syncing with custom Vitruvian metrics and SHA-256 hashes
+const graphData = {
   nodes: [
-    { id: "Investigación", group: 1 },
-    { id: "Sakai", group: 2 },
-    { id: "Centrum Subsidii", group: 2 },
-    { id: "Antigravity", group: 1 }
+    { 
+      id: "agora", 
+      title: "El Ágora (Home)", 
+      desc: "Punto de encuentro y portal principal de entrada a la Mediateca Digital ISAN. Sincronización y sensado neuronal en tiempo real.", 
+      url: "/", 
+      category: "portal", 
+      size: 16,
+      vitruvian: { poetic: 50, hermetic: 40, technical: 70, narrative: 60 },
+      hash: "a68d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d18f4",
+      resonancia: "1.57714881"
+    },
+    { 
+      id: "ingredere", 
+      title: "🐍 Ingredere in secreta", 
+      desc: "Portal de Investigación y Planta 1. Umbral secreto que custodia el corpus filosófico, metrológico y simbólico de Quartz.", 
+      url: "/quartz_index.html", 
+      category: "portal", 
+      size: 14,
+      vitruvian: { poetic: 75, hermetic: 90, technical: 30, narrative: 80 },
+      hash: "f56d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18f9a2b7",
+      resonancia: "1.85409117"
+    },
+    { 
+      id: "biblioteca", 
+      title: "3 Biblioteca", 
+      desc: "Colección ordenada de recursos, apuntes institucionales, diarios académicos y accesos al corpus completo de Arq. M.H. Ibáñez en Academia.edu.", 
+      url: "/Biblioteca.html", 
+      category: "core", 
+      size: 11,
+      vitruvian: { poetic: 60, hermetic: 70, technical: 40, narrative: 90 },
+      hash: "c92d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d18e1fa",
+      resonancia: "1.41285098"
+    },
+    { 
+      id: "bitacora", 
+      title: "Bitácora Académica", 
+      desc: "Sensado continuo de eventos, conferencias, bitácoras de desarrollo institucional y el latido vital de la Academia.", 
+      url: "/Bitácora-Académica.html", 
+      category: "core", 
+      size: 11,
+      vitruvian: { poetic: 40, hermetic: 30, technical: 50, narrative: 95 },
+      hash: "b71d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d18e20b",
+      resonancia: "1.12519284"
+    },
+    { 
+      id: "curia_cambii", 
+      title: "Curia Cambii IDX", 
+      desc: "Panel de control financiero de ISAN Digital Exchange. Auditoría de valores soberanos e intercambio descentralizado.", 
+      url: "/Curia-Cambii-IDX.html", 
+      category: "core", 
+      size: 11,
+      vitruvian: { poetic: 20, hermetic: 50, technical: 95, narrative: 40 },
+      hash: "d48d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d18e31a",
+      resonancia: "2.01294875"
+    },
+    { 
+      id: "dossier", 
+      title: "DOSSIER PROFESIONAL", 
+      desc: "Curriculum Vitae y portafolio de arquitectura, docencia universitaria e investigaciones del fundador Arq. M.H. Ibáñez Sánchez.", 
+      url: "/DOSSIER-PROFESIONAL.html", 
+      category: "core", 
+      size: 11,
+      vitruvian: { poetic: 50, hermetic: 30, technical: 60, narrative: 85 },
+      hash: "e12d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d18e47f",
+      resonancia: "1.28591822"
+    },
+    { 
+      id: "isan_atelier", 
+      title: "ISAN atelier academiae C.A", 
+      desc: "Estatutos fundacionales, visión arquitectónica de vanguardia y la constitución del núcleo de pensamiento interdisciplinario.", 
+      url: "/ISAN-atelier-academiae-C.A.html", 
+      category: "core", 
+      size: 11,
+      vitruvian: { poetic: 70, hermetic: 80, technical: 50, narrative: 75 },
+      hash: "a84d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d18e5b2",
+      resonancia: "1.64201948"
+    },
+    { 
+      id: "sendero_serpiente", 
+      title: "Lo Oculto del Sendero de la Serpiente", 
+      desc: "Ensayo esotérico y geométrico sobre las proporciones universales, mitología y el trazado sagrado de la serpiente terrestre.", 
+      url: "/Lo-Oculto-del-Sendero-de-la-Serpiente.html", 
+      category: "core", 
+      size: 11,
+      vitruvian: { poetic: 95, hermetic: 95, technical: 20, narrative: 50 },
+      hash: "468d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d18f50c",
+      resonancia: "1.98509812"
+    },
+    { 
+      id: "cursos_web", 
+      title: "Proyecto de Cursos Web", 
+      desc: "Planificación de módulos educativos y talleres interactivos de arquitectura sagrada, metrología y desarrollo tecnológico.", 
+      url: "/Proyecto-de-Cursos-Web.html", 
+      category: "core", 
+      size: 11,
+      vitruvian: { poetic: 40, hermetic: 40, technical: 85, narrative: 70 },
+      hash: "f32d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d18e69d",
+      resonancia: "1.32049182"
+    },
+    { 
+      id: "convergencia", 
+      title: "Teoría de la Convergencia", 
+      desc: "Fundamento epistemológico que unifica la geometría de la Esfinge de Giza, metrología antigua y cómputo moderno.", 
+      url: "/teoria_convergencia.html", 
+      category: "core", 
+      size: 11,
+      vitruvian: { poetic: 80, hermetic: 95, technical: 90, narrative: 60 },
+      hash: "c28d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d18e77a",
+      resonancia: "2.45019827"
+    },
+    { 
+      id: "bunker", 
+      title: "Búnker Soberano", 
+      desc: "Nivel de máxima seguridad digital y operativa. Custodia del Reglamento Interno, la infraestructura y el Oráculo.", 
+      url: "/bunker_soberano/index.html", 
+      category: "bunker", 
+      size: 12,
+      vitruvian: { poetic: 10, hermetic: 80, technical: 95, narrative: 30 },
+      hash: "012d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d18e80a",
+      resonancia: "2.15519823"
+    },
+    { 
+      id: "manifiesto", 
+      title: "Manifiesto Operativo ISAN", 
+      desc: "Declaración soberana de independencia digital, infraestructura autogestionada y resistencia ontológica ante corporaciones.", 
+      url: "/bunker_soberano/manifiesto/Manifiesto_Operativo_ISAN_2026.html", 
+      category: "bunker", 
+      size: 8,
+      vitruvian: { poetic: 85, hermetic: 75, technical: 70, narrative: 80 },
+      hash: "b21d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d18f9d0",
+      resonancia: "1.99518290"
+    },
+    { 
+      id: "auditoria_ont", 
+      title: "Manual Auditoría Ontológica", 
+      desc: "Guía de alineación metafísica y técnica para validar la integridad existencial y formal de la red y bases de datos.", 
+      url: "/bunker_soberano/otros/Manual_Auditoria_Ontologica.html", 
+      category: "bunker", 
+      size: 8,
+      vitruvian: { poetic: 40, hermetic: 90, technical: 85, narrative: 45 },
+      hash: "e68d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d1810af",
+      resonancia: "2.08019481"
+    },
+    { 
+      id: "review_nginx", 
+      title: "Review Nginx Authelia", 
+      desc: "Planos técnicos de la esclusa de seguridad perimetral para proteger servicios locales y APIs soberanas.", 
+      url: "/bunker_soberano/otros/Review_Nginx_Authelia.html", 
+      category: "bunker", 
+      size: 8,
+      vitruvian: { poetic: 10, hermetic: 40, technical: 95, narrative: 30 },
+      hash: "a38d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d1811fa",
+      resonancia: "1.89048192"
+    },
+    { 
+      id: "reglamento_adn", 
+      title: "Reglamento Interno ADN", 
+      desc: "Código de conducta institucional y arquitectura ética del personal de investigación y soporte de la Academia.", 
+      url: "/bunker_soberano/reglamento/Reglamento_Interno_ADN.html", 
+      category: "bunker", 
+      size: 8,
+      vitruvian: { poetic: 30, hermetic: 60, technical: 80, narrative: 70 },
+      hash: "d78d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d1812fa",
+      resonancia: "1.54519284"
+    },
+    { 
+      id: "reglamento_completo", 
+      title: "Reglamento Interno Completo", 
+      desc: "Constitución Suprema de ISAN atelier academiae C.A. Protocolo legal y de gobierno soberano unificado.", 
+      url: "/bunker_soberano/reglamento/Reglamento_Interno_ISAN_Atelier.html", 
+      category: "bunker", 
+      size: 9,
+      vitruvian: { poetic: 40, hermetic: 70, technical: 90, narrative: 75 },
+      hash: "818d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d1813fb",
+      resonancia: "1.78201948"
+    },
+    { 
+      id: "app_streamlit", 
+      title: "App Streamlit Oráculo", 
+      desc: "Portal interactivo de visualización de datos y consultas en tiempo real para el Oráculo y Asientos de datos.", 
+      url: "/bunker_soberano/streamlit/app.html", 
+      category: "bunker", 
+      size: 8,
+      vitruvian: { poetic: 30, hermetic: 40, technical: 95, narrative: 50 },
+      hash: "368d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d1814fa",
+      resonancia: "1.92401827"
+    },
+    { 
+      id: "app_core", 
+      title: "App ISAN Core", 
+      desc: "Consola central de sincronización del búnker soberano y comando del speculum valoris.", 
+      url: "/bunker_soberano/streamlit/app_isan_core.html", 
+      category: "bunker", 
+      size: 8,
+      vitruvian: { poetic: 20, hermetic: 50, technical: 95, narrative: 40 },
+      hash: "598d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d1815fa",
+      resonancia: "2.02509182"
+    },
+    { 
+      id: "isan_bridge", 
+      title: "ISAN Bridge API", 
+      desc: "Especificación técnica del puente de datos en Cloud Run para unificar las inteligencias del campus.", 
+      url: "/bunker_soberano/streamlit/isan_bridge.html", 
+      category: "bunker", 
+      size: 8,
+      vitruvian: { poetic: 15, hermetic: 45, technical: 95, narrative: 40 },
+      hash: "b78d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d1816fa",
+      resonancia: "1.97018284"
+    },
+    { 
+      id: "informes", 
+      title: "Informes Técnicos", 
+      desc: "Registro de auditorías, despliegues Cloud Run, migraciones de base de datos y optimización de costes del campus.", 
+      url: "/informes_tecnicos/index.html", 
+      category: "reports", 
+      size: 11,
+      vitruvian: { poetic: 20, hermetic: 40, technical: 95, narrative: 60 },
+      hash: "c18d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d1817fa",
+      resonancia: "1.99918293"
+    },
+    { 
+      id: "inf_0001", 
+      title: "INFORME 0001 (POUS)", 
+      desc: "Auditoría de despliegue inicial y saneamiento de dependencias en Docker local.", 
+      url: "/informes_tecnicos/INFORME_0001_POUS_2026-05-01.html", 
+      category: "reports", 
+      size: 7,
+      vitruvian: { poetic: 10, hermetic: 30, technical: 95, narrative: 50 },
+      hash: "e01d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d1818fb",
+      resonancia: "1.72019284"
+    },
+    { 
+      id: "inf_0002", 
+      title: "INFORME 0002 (Obsidian)", 
+      desc: "Estudio de acoplamiento de bóvedas Obsidian locales con sistemas de almacenamiento en la nube.", 
+      url: "/informes_tecnicos/INFORME_0002_Obsidian_2026-05-01.html", 
+      category: "reports", 
+      size: 7,
+      vitruvian: { poetic: 25, hermetic: 50, technical: 95, narrative: 60 },
+      hash: "e02d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d1819fa",
+      resonancia: "1.81019481"
+    },
+    { 
+      id: "inf_0005", 
+      title: "INFORME 0005 (Gobierno)", 
+      desc: "Implementación de la Constitución ISAN-2026 en los endpoints automáticos de la IA.", 
+      url: "/informes_tecnicos/INFORME_0005_Gobierno_2026-05-01.html", 
+      category: "reports", 
+      size: 7,
+      vitruvian: { poetic: 40, hermetic: 70, technical: 95, narrative: 55 },
+      hash: "e05d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d1820fa",
+      resonancia: "1.95402948"
+    },
+    { 
+      id: "inf_0006", 
+      title: "INFORME 0006 (Oráculo)", 
+      desc: "Conexión exitosa del Oráculo al PostgreSQL de Speculum Valoris en Cloud Run.", 
+      url: "/informes_tecnicos/INFORME_0006_Oraculo_2026-05-01.html", 
+      category: "reports", 
+      size: 7,
+      vitruvian: { poetic: 30, hermetic: 60, technical: 95, narrative: 60 },
+      hash: "e06d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c1821face",
+      resonancia: "1.91204918"
+    },
+    { 
+      id: "inf_0011", 
+      title: "INFORME 0011 (Turris Magna)", 
+      desc: "Modelado metrológico y simulación de la Turris Magna del campus virtual Sendai.", 
+      url: "/informes_tecnicos/INFORME_0011_Turris-Magna_2026-05-01.html", 
+      category: "reports", 
+      size: 7,
+      vitruvian: { poetic: 80, hermetic: 95, technical: 85, narrative: 50 },
+      hash: "e11d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c1822fade",
+      resonancia: "2.38019481"
+    },
+    { 
+      id: "inf_0012", 
+      title: "INFORME 0012 (Exchange)", 
+      desc: "Configuración y puesta en marcha del motor financiero de Curia Cambii IDX.", 
+      url: "/informes_tecnicos/INFORME_0012_Exchange_2026-05-01.html", 
+      category: "reports", 
+      size: 7,
+      vitruvian: { poetic: 15, hermetic: 50, technical: 95, narrative: 55 },
+      hash: "e12d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c1823fade",
+      resonancia: "1.91029482"
+    }
   ],
   links: [
-    { source: "Investigación", target: "Centrum Subsidii", value: 1 },
-    { source: "Sakai", target: "Investigación", value: 1 },
-    { source: "Antigravity", target: "Investigación", value: 2 }
+    // Core structure connections
+    { source: "agora", target: "ingredere", value: 4 },
+    
+    // Portal to main quartz pages
+    { source: "ingredere", target: "biblioteca", value: 2 },
+    { source: "ingredere", target: "bitacora", value: 2 },
+    { source: "ingredere", target: "curia_cambii", value: 2 },
+    { source: "ingredere", target: "dossier", value: 2 },
+    { source: "ingredere", target: "isan_atelier", value: 2 },
+    { source: "ingredere", target: "sendero_serpiente", value: 2 },
+    { source: "ingredere", target: "cursos_web", value: 2 },
+    { source: "ingredere", target: "convergencia", value: 2 },
+    { source: "ingredere", target: "bunker", value: 3 },
+    { source: "ingredere", target: "informes", value: 3 },
+
+    // Bunker connections
+    { source: "bunker", target: "manifiesto", value: 2 },
+    { source: "bunker", target: "auditoria_ont", value: 1 },
+    { source: "bunker", target: "review_nginx", value: 1 },
+    { source: "bunker", target: "reglamento_adn", value: 2 },
+    { source: "bunker", target: "reglamento_completo", value: 3 },
+    { source: "bunker", target: "app_streamlit", value: 2 },
+    { source: "bunker", target: "app_core", value: 2 },
+    { source: "bunker", target: "isan_bridge", value: 2 },
+
+    // Reports connections
+    { source: "informes", target: "inf_0001", value: 1 },
+    { source: "informes", target: "inf_0002", value: 1 },
+    { source: "informes", target: "inf_0005", value: 1 },
+    { source: "informes", target: "inf_0006", value: 2 },
+    { source: "informes", target: "inf_0011", value: 1 },
+    { source: "informes", target: "inf_0012", value: 2 },
+
+    // Cross-links to make it organic and "web" styled
+    { source: "biblioteca", target: "cursos_web", value: 1 },
+    { source: "bitacora", target: "dossier", value: 1 },
+    { source: "isan_atelier", target: "reglamento_completo", value: 2 },
+    { source: "convergencia", target: "sendero_serpiente", value: 2 },
+    { source: "convergencia", target: "inf_0011", value: 2 }, // Metrologia
+    { source: "curia_cambii", target: "inf_0012", value: 2 }, // Exchange report
+    { source: "app_streamlit", target: "inf_0006", value: 2 } // Oráculo connects
   ]
 };
 
-const width = 800;
-const height = 400;
+// Colors matching our premium theme
+const colorMap = {
+  portal: "#00f2ff", // Cyan
+  core: "#fbbf24",   // Gold/Amber
+  bunker: "#ff2e2e", // Crimson/Ruby
+  reports: "#c084fc" // Violet/Purple
+};
 
-const simulation = d3.forceSimulation(data.nodes)
-  .force("link", d3.forceLink(data.links).id((d: any) => d.id).distance(100))
-  .force("charge", d3.forceManyBody().strength(-300))
-  .force("center", d3.forceCenter(width / 2, height / 2));
+let width = 0;
+let height = 0;
+let svg: any = null;
+let simulation: any = null;
+let zoomBehavior: any = null;
+let gContainer: any = null;
 
-const svg = d3.select("#graph-container")
-  .append("svg")
-  .attr("viewBox", [0, 0, width, height]);
+function initGraph() {
+  const container = document.getElementById("graph-container");
+  if (!container) return;
 
-const link = svg.append("g")
-  .attr("stroke", "#999")
-  .attr("stroke-opacity", 0.6)
-  .selectAll("line")
-  .data(data.links)
-  .join("line")
-  .attr("stroke-width", (d: any) => Math.sqrt(d.value));
+  // Clear previous SVG if hot reloading
+  container.innerHTML = "";
 
-const node = svg.append("g")
-  .attr("stroke", "#fff")
-  .attr("stroke-width", 1.5)
-  .selectAll("circle")
-  .data(data.nodes)
-  .join("circle")
-  .attr("r", 8)
-  .attr("fill", "#fbc02d")
-  .call(d3.drag()
+  width = container.clientWidth;
+  height = container.clientHeight;
+
+  // Create SVG
+  svg = d3.select("#graph-container")
+    .append("svg")
+    .attr("width", "100%")
+    .attr("height", "100%")
+    .attr("viewBox", [0, 0, width, height]);
+
+  // Create neon glowing filter defs
+  const defs = svg.append("defs");
+  
+  // Neon glow filter
+  const filter = defs.append("filter")
+    .attr("id", "neon-glow")
+    .attr("x", "-50%")
+    .attr("y", "-50%")
+    .attr("width", "200%")
+    .attr("height", "200%");
+
+  filter.append("feGaussianBlur")
+    .attr("stdDeviation", "6")
+    .attr("result", "coloredBlur");
+
+  const merge = filter.append("feMerge");
+  merge.append("feMergeNode").attr("in", "coloredBlur");
+  merge.append("feMergeNode").attr("in", "SourceGraphic");
+
+  // Glowing group for all zoomable elements
+  gContainer = svg.append("g").attr("class", "graph-zoom-group");
+
+  // Setup Zoom Behavior
+  zoomBehavior = d3.zoom()
+    .scaleExtent([0.2, 5])
+    .on("zoom", (event) => {
+      gContainer.attr("transform", event.transform);
+    });
+
+  svg.call(zoomBehavior);
+
+  // Simulation settings
+  simulation = d3.forceSimulation(graphData.nodes as any)
+    .force("link", d3.forceLink(graphData.links as any).id((d: any) => d.id).distance((d: any) => 50 + (20 - d.value) * 3))
+    .force("charge", d3.forceManyBody().strength(-220))
+    .force("center", d3.forceCenter(width / 2, height / 2))
+    .force("collide", d3.forceCollide().radius((d: any) => d.size * 1.6).iterations(2));
+
+  // Render links (lines)
+  const link = gContainer.append("g")
+    .attr("class", "links")
+    .selectAll("line")
+    .data(graphData.links)
+    .join("line")
+    .attr("stroke", "rgba(255,255,255,0.08)")
+    .attr("stroke-width", (d: any) => d.value * 0.8)
+    .attr("transition", "stroke 0.3s ease, stroke-width 0.3s ease");
+
+  // Render nodes (groups for circle + text)
+  const node = gContainer.append("g")
+    .attr("class", "nodes")
+    .selectAll("g")
+    .data(graphData.nodes)
+    .join("g")
+    .attr("class", "node-group")
+    .call(d3.drag()
       .on("start", dragstarted)
       .on("drag", dragged)
       .on("end", dragended) as any);
 
-node.append("title")
-  .text((d: any) => d.id);
+  // Inner glow circle for key nodes
+  node.append("circle")
+    .attr("r", (d: any) => d.size * 1.3)
+    .attr("fill", "transparent")
+    .attr("stroke", (d: any) => colorMap[d.category as keyof typeof colorMap])
+    .attr("stroke-opacity", 0.15)
+    .attr("stroke-width", 2)
+    .attr("class", "glow-ring");
 
-simulation.on("tick", () => {
-  link
-    .attr("x1", (d: any) => d.source.x)
-    .attr("y1", (d: any) => d.source.y)
-    .attr("x2", (d: any) => d.target.x)
-    .attr("y2", (d: any) => d.target.y);
+  // Main node circle
+  node.append("circle")
+    .attr("r", (d: any) => d.size)
+    .attr("fill", (d: any) => colorMap[d.category as keyof typeof colorMap])
+    .attr("stroke", "#020307")
+    .attr("stroke-width", 1.5)
+    .attr("style", "cursor: pointer; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);")
+    .attr("class", "node-circle");
 
-  node
-    .attr("cx", (d: any) => d.x)
-    .attr("cy", (d: any) => d.y);
-});
+  // Node Labels
+  node.append("text")
+    .attr("dy", (d: any) => d.size + 15)
+    .attr("text-anchor", "middle")
+    .attr("fill", "rgba(255, 255, 255, 0.7)")
+    .attr("font-size", "9px")
+    .attr("font-family", "var(--font-sans)")
+    .attr("font-weight", 500)
+    .attr("letter-spacing", "0.2px")
+    .attr("pointer-events", "none")
+    .text((d: any) => d.title);
 
-function dragstarted(event: any) {
+  // Interaction: Hover Effects
+  node.on("mouseenter", function(event: any, d: any) {
+    highlightNode(d, this);
+  });
+
+  node.on("mouseleave", function() {
+    resetHighlight();
+  });
+
+  // Interaction: Click to lock/update Details Card
+  node.on("click", (event: any, d: any) => {
+    event.stopPropagation();
+    updateDetailsCard(d);
+  });
+
+  // Background click resets details card to placeholder and removes highlight lock
+  svg.on("click", () => {
+    resetDetailsCard();
+  });
+
+  // Simulation tick
+  simulation.on("tick", () => {
+    link
+      .attr("x1", (d: any) => (d.source as any).x)
+      .attr("y1", (d: any) => (d.source as any).y)
+      .attr("x2", (d: any) => (d.target as any).x)
+      .attr("y2", (d: any) => (d.target as any).y);
+
+    node.attr("transform", (d: any) => `translate(${d.x},${d.y})`);
+  });
+
+  // Highlights and selects the hovered/searched node
+  function highlightNode(targetNode: any, element: any) {
+    // Zoom and pulse effect on the hovered element
+    d3.select(element).select(".node-circle")
+      .attr("r", targetNode.size * 1.4)
+      .attr("filter", "url(#neon-glow)");
+
+    d3.select(element).select("text")
+      .attr("fill", "#ffffff")
+      .attr("font-size", "10px")
+      .attr("font-weight", "bold");
+
+    // Fade all other nodes and lines
+    node.style("opacity", (n: any) => (n.id === targetNode.id || isConnected(targetNode, n)) ? 1 : 0.2);
+    link
+      .style("stroke", (l: any) => ((l.source as any).id === targetNode.id || (l.target as any).id === targetNode.id) ? colorMap[targetNode.category as keyof typeof colorMap] : "rgba(255,255,255,0.03)")
+      .style("stroke-opacity", (l: any) => ((l.source as any).id === targetNode.id || (l.target as any).id === targetNode.id) ? 0.9 : 0.2)
+      .attr("stroke-width", (l: any) => ((l.source as any).id === targetNode.id || (l.target as any).id === targetNode.id) ? l.value * 1.5 : l.value * 0.8);
+      
+    // Update floating details temporarily on hover (only if no clicked node locked)
+    if (!isCardLocked) {
+      updateDetailsCard(targetNode, false);
+    }
+  }
+
+  function resetHighlight() {
+    node.select(".node-circle")
+      .attr("r", (d: any) => d.size)
+      .attr("filter", null);
+
+    node.select("text")
+      .attr("fill", "rgba(255, 255, 255, 0.7)")
+      .attr("font-size", "9px")
+      .attr("font-weight", 500);
+
+    node.style("opacity", 1);
+    link
+      .style("stroke", "rgba(255,255,255,0.08)")
+      .style("stroke-opacity", 0.6)
+      .attr("stroke-width", (d: any) => d.value * 0.8);
+      
+    if (!isCardLocked) {
+      resetDetailsCard();
+    }
+  }
+
+  function isConnected(a: any, b: any) {
+    return graphData.links.some(l => 
+      ((l.source as any).id === a.id && (l.target as any).id === b.id) || 
+      ((l.source as any).id === b.id && (l.target as any).id === a.id)
+    );
+  }
+}
+
+// State for locked details card
+let isCardLocked = false;
+
+function updateDetailsCard(nodeData: any, lock = true) {
+  const placeholder = document.getElementById("details-placeholder");
+  const content = document.getElementById("details-content");
+  const title = document.getElementById("details-title");
+  const category = document.getElementById("details-category");
+  const desc = document.getElementById("details-desc");
+  const link = document.getElementById("details-link") as HTMLAnchorElement;
+
+  const integrityHash = document.getElementById("integrity-hash");
+  const resonanciaVal = document.getElementById("resonancia-val");
+
+  // Vitruvian Bars elements
+  const poeticBar = document.getElementById("poetic-bar");
+  const poeticVal = document.getElementById("poetic-val");
+  const hermeticBar = document.getElementById("hermetic-bar");
+  const hermeticVal = document.getElementById("hermetic-val");
+  const technicalBar = document.getElementById("technical-bar");
+  const technicalVal = document.getElementById("technical-val");
+  const narrativeBar = document.getElementById("narrative-bar");
+  const narrativeVal = document.getElementById("narrative-val");
+
+  if (!placeholder || !content || !title || !category || !desc || !link) return;
+
+  if (lock) {
+    isCardLocked = true;
+  }
+
+  // Update text
+  title.innerText = nodeData.title;
+  category.innerText = nodeData.category === "core" ? "Bóveda Principal" :
+                       nodeData.category === "portal" ? "Portal Clave" :
+                       nodeData.category === "bunker" ? "Búnker Soberano" : "Informe Técnico";
+  
+  // Color the category tag
+  category.style.borderColor = colorMap[nodeData.category as keyof typeof colorMap];
+  category.style.color = colorMap[nodeData.category as keyof typeof colorMap];
+  category.style.background = `rgba(${nodeData.category === 'portal' ? '0, 242, 255' : nodeData.category === 'core' ? '251, 191, 36' : nodeData.category === 'bunker' ? '255, 46, 46' : '192, 132, 252'}, 0.08)`;
+
+  desc.innerText = nodeData.desc;
+  
+  if (nodeData.url === "/") {
+    link.style.display = "none";
+  } else {
+    link.style.display = "inline-block";
+    link.href = nodeData.url;
+  }
+
+  // Update Vitruvian Bars
+  const vit = nodeData.vitruvian || { poetic: 50, hermetic: 50, technical: 50, narrative: 50 };
+  if (poeticBar && poeticVal) { poeticBar.style.width = `${vit.poetic}%`; poeticVal.innerText = `${vit.poetic}%`; }
+  if (hermeticBar && hermeticVal) { hermeticBar.style.width = `${vit.hermetic}%`; hermeticVal.innerText = `${vit.hermetic}%`; }
+  if (technicalBar && technicalVal) { technicalBar.style.width = `${vit.technical}%`; technicalVal.innerText = `${vit.technical}%`; }
+  if (narrativeBar && narrativeVal) { narrativeBar.style.width = `${vit.narrative}%`; narrativeVal.innerText = `${vit.narrative}%`; }
+
+  // Update Crypto Validador
+  if (integrityHash) integrityHash.innerText = nodeData.hash || "a68d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d18f4";
+  if (resonanciaVal) resonanciaVal.innerText = nodeData.resonancia || "1.57714881";
+
+  // Display details content
+  placeholder.style.display = "none";
+  content.style.display = "block";
+}
+
+function resetDetailsCard() {
+  isCardLocked = false;
+  const placeholder = document.getElementById("details-placeholder");
+  const content = document.getElementById("details-content");
+  
+  // Vitruvian Bars elements
+  const poeticBar = document.getElementById("poetic-bar");
+  const poeticVal = document.getElementById("poetic-val");
+  const hermeticBar = document.getElementById("hermetic-bar");
+  const hermeticVal = document.getElementById("hermetic-val");
+  const technicalBar = document.getElementById("technical-bar");
+  const technicalVal = document.getElementById("technical-val");
+  const narrativeBar = document.getElementById("narrative-bar");
+  const narrativeVal = document.getElementById("narrative-val");
+
+  const integrityHash = document.getElementById("integrity-hash");
+  const resonanciaVal = document.getElementById("resonancia-val");
+
+  if (placeholder && content) {
+    placeholder.style.display = "flex";
+    content.style.display = "none";
+  }
+
+  // Reset Vitruvian Bars to repository average
+  if (poeticBar && poeticVal) { poeticBar.style.width = "50%"; poeticVal.innerText = "50%"; }
+  if (hermeticBar && hermeticVal) { hermeticBar.style.width = "60%"; hermeticVal.innerText = "60%"; }
+  if (technicalBar && technicalVal) { technicalBar.style.width = "75%"; technicalVal.innerText = "75%"; }
+  if (narrativeBar && narrativeVal) { narrativeBar.style.width = "45%"; narrativeVal.innerText = "45%"; }
+
+  // Reset Crypto Validador
+  if (integrityHash) integrityHash.innerText = "a68d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d18f4";
+  if (resonanciaVal) resonanciaVal.innerText = "1.57714881";
+}
+
+// D3 Drag functions
+function dragstarted(event: any, d: any) {
   if (!event.active) simulation.alphaTarget(0.3).restart();
-  event.subject.fx = event.subject.x;
-  event.subject.fy = event.subject.y;
+  d.fx = d.x;
+  d.fy = d.y;
 }
 
-function dragged(event: any) {
-  event.subject.fx = event.x;
-  event.subject.fy = event.y;
+function dragged(event: any, d: any) {
+  d.fx = event.x;
+  d.fy = event.y;
 }
 
-function dragended(event: any) {
+function dragended(event: any, d: any) {
   if (!event.active) simulation.alphaTarget(0);
-  event.subject.fx = null;
-  event.subject.fy = null;
+  d.fx = null;
+  d.fy = null;
 }
+
+// Zoom controls setup
+function setupZoomControls() {
+  const zoomInBtn = document.getElementById("zoom-in");
+  const zoomOutBtn = document.getElementById("zoom-out");
+  const zoomResetBtn = document.getElementById("zoom-reset");
+
+  zoomInBtn?.addEventListener("click", () => {
+    svg.transition().duration(300).call(zoomBehavior.scaleBy, 1.3);
+  });
+
+  zoomOutBtn?.addEventListener("click", () => {
+    svg.transition().duration(300).call(zoomBehavior.scaleBy, 0.7);
+  });
+
+  zoomResetBtn?.addEventListener("click", () => {
+    svg.transition().duration(400).call(zoomBehavior.transform, d3.zoomIdentity);
+  });
+}
+
+// Search bar setup
+function setupSearch() {
+  const searchInput = document.getElementById("node-search") as HTMLInputElement;
+  const clearBtn = document.getElementById("search-clear");
+
+  if (!searchInput) return;
+
+  searchInput.addEventListener("input", (e) => {
+    const q = searchInput.value.toLowerCase().trim();
+    
+    if (q.length > 0) {
+      if (clearBtn) clearBtn.style.display = "block";
+      
+      const nodeGroups = gContainer.selectAll(".node-group");
+      
+      // Filter matching nodes
+      const matches = graphData.nodes.filter((n: any) => 
+        n.title.toLowerCase().includes(q) || 
+        n.desc.toLowerCase().includes(q) ||
+        n.id.toLowerCase().includes(q)
+      );
+
+      if (matches.length > 0) {
+        // Highlight matching nodes
+        nodeGroups.style("opacity", (n: any) => 
+          matches.some((m: any) => m.id === n.id) ? 1 : 0.15
+        );
+
+        // Highlight matching circles with neon glow
+        nodeGroups.select(".node-circle")
+          .attr("r", (n: any) => matches.some((m: any) => m.id === n.id) ? n.size * 1.3 : n.size)
+          .attr("filter", (n: any) => matches.some((m: any) => m.id === n.id) ? "url(#neon-glow)" : null);
+
+        // Select the first matched node and focus/lock it
+        const firstMatch = matches[0] as any;
+        updateDetailsCard(firstMatch, true);
+        
+        // Zoom camera to focus on this node
+        const zoomScale = 1.6;
+        const transform = d3.zoomIdentity
+          .translate(width / 2 - firstMatch.x * zoomScale, height / 2 - firstMatch.y * zoomScale)
+          .scale(zoomScale);
+
+        svg.transition().duration(500).call(zoomBehavior.transform, transform);
+
+        gContainer.selectAll("line")
+          .style("stroke-opacity", 0.05)
+          .style("stroke", "rgba(255,255,255,0.02)");
+      }
+    } else {
+      if (clearBtn) clearBtn.style.display = "none";
+      resetSearchAndVisuals();
+    }
+  });
+  
+  clearBtn?.addEventListener("click", () => {
+    searchInput.value = "";
+    clearBtn.style.display = "none";
+    resetSearchAndVisuals();
+  });
+
+  function resetSearchAndVisuals() {
+    const nodeGroups = gContainer.selectAll(".node-group");
+    nodeGroups.style("opacity", 1);
+    nodeGroups.select(".node-circle")
+      .attr("r", (d: any) => d.size)
+      .attr("filter", null);
+      
+    gContainer.selectAll("line")
+      .style("stroke", "rgba(255,255,255,0.08)")
+      .style("stroke-opacity", 0.6)
+      .attr("stroke-width", (d: any) => d.value * 0.8);
+      
+    resetDetailsCard();
+    
+    // Zoom out to center
+    svg.transition().duration(500).call(
+      zoomBehavior.transform,
+      d3.zoomIdentity
+    );
+  }
+}
+
+// Trigger initialization on load and window resize
+function runInit() {
+  initGraph();
+  setupZoomControls();
+  setupSearch();
+}
+
+if (document.readyState === "complete" || document.readyState === "interactive") {
+  runInit();
+} else {
+  window.addEventListener("DOMContentLoaded", runInit);
+}
+
+document.addEventListener("astro:page-load", runInit);
+
+window.addEventListener("resize", () => {
+  const container = document.getElementById("graph-container");
+  if (!container || !svg || !simulation) return;
+  
+  width = container.clientWidth;
+  height = container.clientHeight;
+  
+  simulation.force("center", d3.forceCenter(width / 2, height / 2));
+  simulation.alpha(0.3).restart();
+});
 </script>

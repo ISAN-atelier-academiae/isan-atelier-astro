@@ -12,9 +12,11 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/starlight": "^0.31.0",
+    "@tailwindcss/vite": "^4.3.0",
     "astro": "^5.0.0",
     "d3": "^7.9.0",
     "remark-wiki-link": "^2.0.1",
+    "tailwindcss": "^4.3.0",
     "typescript": "^5.7.0"
   }
 }

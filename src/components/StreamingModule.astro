@@ -2,68 +2,166 @@
 // StreamingModule.astro
 // Planta 0: El Ágora (Transmisiones en Vivo)
 ---
-<div class="streaming-agora">
+<div class="streaming-agora glass-panel">
   <div class="agora-header">
-    <span class="live-indicator">🔴 EN VIVO</span>
+    <div class="live-pulse-container">
+      <span class="live-indicator" id="live-label">🔴 SENSADO EN VIVO</span>
+      <div class="pulse-ring active" id="live-pulse"></div>
+    </div>
     <h2>Planta 0: El Ágora</h2>
-    <p>Conferencias y eventos en tiempo real de ISAN Atelier Academiae</p>
+    <p class="agora-subtitle">Sincronización de conocimiento en tiempo real</p>
   </div>
   
   <div class="video-embed-container">
-    <!-- Placeholder para iframe de YouTube / Firebase Live Stream -->
-    <div class="stream-placeholder">
-      <p>Esperando conexión al flujo de transmisión...</p>
-      <button class="connect-stream-btn">Reconectar Cerebro</button>
+    <div class="stream-placeholder" id="stream-ui">
+      <div class="neural-icon" id="neural-icon">🧠</div>
+      <p id="stream-text">Esperando conexión al flujo neuronal...</p>
+      <button class="connect-stream-btn" id="connect-btn">Inyectar Conciencia</button>
     </div>
   </div>
 </div>
 
+<script>
+  const bridgeUrl = import.meta.env.PUBLIC_BRIDGE_URL || 'https://isan-bridge-46085826663.us-central1.run.app';
+  const connectBtn = document.getElementById('connect-btn');
+  const streamText = document.getElementById('stream-text');
+  const neuralIcon = document.getElementById('neural-icon');
+  const livePulse = document.getElementById('live-pulse');
+  const liveLabel = document.getElementById('live-label');
+
+  connectBtn?.addEventListener('click', async () => {
+    streamText.innerText = "Sincronizando con el Oráculo...";
+    connectBtn.style.display = "none";
+    neuralIcon.style.animation = "pulse 0.5s infinite";
+
+    try {
+      const response = await fetch(`${bridgeUrl}/v1/models`);
+      if (response.ok) {
+        const data = await response.json();
+        streamText.innerHTML = `<span style="color: #00f2ff">CONEXIÓN ESTABLECIDA</span><br/><small>Modelos detectados: ${data.data.length}</small>`;
+        neuralIcon.style.animation = "float 3s ease-in-out infinite";
+        liveLabel.innerText = "🟢 ENLACE ACTIVO";
+        livePulse.style.background = "#00f2ff";
+        livePulse.style.boxShadow = "0 0 15px #00f2ff";
+      } else {
+        throw new Error();
+      }
+    } catch (e) {
+      streamText.innerText = "Error: Búnker no responde. Reintente.";
+      connectBtn.style.display = "block";
+      neuralIcon.style.animation = "none";
+    }
+  });
+</script>
+
 <style>
 .streaming-agora {
-  border: 1px solid rgba(255, 0, 0, 0.3);
-  border-radius: 12px;
-  overflow: hidden;
   margin-bottom: 3rem;
-  background: rgba(10, 0, 0, 0.5);
+  overflow: hidden;
+  border: 1px solid var(--color-glass-border);
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
+
+.streaming-agora:hover {
+  border-color: var(--color-neural-red);
+  transform: translateY(-4px);
+}
+
 .agora-header {
-  padding: 1.5rem;
-  border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+  padding: 2rem;
+  border-bottom: 1px solid var(--color-glass-border);
+  background: linear-gradient(to bottom, rgba(255, 46, 46, 0.05), transparent);
 }
+
+.live-pulse-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0.5rem;
+}
+
 .live-indicator {
-  color: #ff4444;
-  font-weight: bold;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-  animation: pulse 2s infinite;
+  color: var(--color-neural-red);
+  font-weight: 800;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px var(--color-neural-red-glow);
 }
+
+.pulse-ring {
+  width: 10px;
+  height: 10px;
+  background: var(--color-neural-red);
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(255, 46, 46, 0.7);
+  animation: pulse-ring 1.5s infinite;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.75rem;
+  color: white;
+  letter-spacing: -0.5px;
+}
+
+.agora-subtitle {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+}
+
 .video-embed-container {
   aspect-ratio: 16 / 9;
-  background: #000;
+  background: radial-gradient(circle at center, #111 0%, #000 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.stream-placeholder {
-  text-align: center;
-  color: rgba(255, 255, 255, 0.5);
-}
-.connect-stream-btn {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background: transparent;
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
-  cursor: pointer;
-}
-.connect-stream-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  position: relative;
 }
 
-@keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
+.stream-placeholder {
+  text-align: center;
+  z-index: 1;
+}
+
+.neural-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 15px var(--color-neural-red-glow));
+  animation: float 3s ease-in-out infinite;
+}
+
+.connect-stream-btn {
+  margin-top: 1.5rem;
+  padding: 0.75rem 2rem;
+  background: transparent;
+  color: white;
+  border: 1px solid var(--color-neural-red);
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.connect-stream-btn:hover {
+  background: var(--color-neural-red);
+  color: white;
+  box-shadow: 0 0 20px var(--color-neural-red-glow);
+  transform: scale(1.05);
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 46, 46, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 46, 46, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 46, 46, 0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 </style>

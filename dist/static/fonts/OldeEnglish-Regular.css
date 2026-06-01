@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "OldeEnglishRegular";
+  src: url("fonts/OldeEnglish-Regular.woff2") format("woff2"),
+       url("fonts/OldeEnglish-Regular.woff") format("woff"),
+       url("fonts/Olde English Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.titulo-olde {
+  font-family: "OldeEnglishRegular";
+  font-size: 1.4rem;
+  color: #000000; /* texto negro */
+}

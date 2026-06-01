@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg id="svg1" width="210mm" height="200mm" inkscape:version="1.4 (86a8ad7, 2024-10-11)" sodipodi:docname="2.svg" version="1.1" viewBox="0 0 210 200" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd">
+ <title id="title2">Coordenada 12.6 N, 12.6 E</title>
+ <sodipodi:namedview id="namedview1" bordercolor="#000000" borderopacity="0.25" inkscape:current-layer="layer1" inkscape:cx="396.84014" inkscape:cy="561.25984" inkscape:deskcolor="#d1d1d1" inkscape:document-units="mm" inkscape:pagecheckerboard="0" inkscape:pageopacity="0.0" inkscape:showpageshadow="2" inkscape:window-height="745" inkscape:window-maximized="1" inkscape:window-width="1311" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:zoom="0.49264169" pagecolor="#ffffff"/>
+ <defs id="defs1">
+  <pattern id="WMFhbasepattern" width="6" height="6" patternUnits="userSpaceOnUse"/>
+ </defs>
+ <g id="layer1" inkscape:groupmode="layer" inkscape:label="Capa 1">
+  <g id="g2" transform="matrix(1.3875 0 0 1.3875 205.86 -23.457)" stroke-width=".14804">
+   <g id="g1" transform="matrix(.26458 0 0 .26458 -232.26 -35.983)" stroke-width=".55954">
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width=".55954">
+     <path id="path1" d="m391.71 496.34h363.19" stroke="#ffbf00"/>
+     <path id="path2" d="m391.71 496.34" stroke="#ffbf00"/>
+     <path id="path3" d="m573.32 314.53-176.62 224.2" stroke="#00f"/>
+     <path id="path4" d="m573.32 314.53 176.62 224.2" stroke="#00f"/>
+     <path id="path5" d="m430.1 639.72h286.44v-286.76h-286.44z" stroke="#f0f"/>
+     <path id="path6" d="m505.21 491.35-0.19975-2.397-0.27965-2.437-0.35955-2.397-0.43945-2.437-0.51935-2.357-0.5593-2.357-0.67916-2.3571-0.75905-2.3171-0.799-2.3171-0.8789-2.2772" stroke="#212830"/>
+     <path id="path7" d="m495.62 459.23-1.2384-2.0774-1.3184-2.0774-1.3583-1.9975-1.3982-1.9576-1.4782-1.9176-1.558-1.8776-1.598-1.7978-1.6779-1.7578-1.7179-1.7178-1.7578-1.6779" stroke="#212830"/>
+    </g>
+    <g>
+     <path id="path8" d="m506.05 491.35-1.638 0.0399 0.99875 4.9538z" fill="#212830" fill-rule="evenodd"/>
+     <path id="path9" d="m480 441.01 1.0786-1.2784-4.3546-2.5568z" fill="#212830" fill-rule="evenodd"/>
+     <text id="text10" transform="translate(481.6 467.46)" fill="#000000" font-family="Arial" font-size="11.312px" font-weight="400" letter-spacing="0px" stroke-width=".55954" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan id="tspan10" x="0" y="0" sodipodi:role="line"><tspan id="tspan9" dx="0" dy="0" fill="#212830" font-family="Arial" font-size="11.312px" font-weight="400" stroke-width=".55954">51.74°</tspan></tspan></text>
+    </g>
+    <g fill="none" stroke="#212830" stroke-linecap="round" stroke-linejoin="round" stroke-width=".55954">
+     <path id="path10" d="m430.1 496.42v13.184"/>
+     <path id="path11" d="m716.54 496.42v13.184"/>
+     <path id="path12" d="m440.05 509.4h96.28"/>
+     <path id="path13" d="m706.6 509.4h-96.28"/>
+    </g>
+    <g>
+     <path id="path14" d="m440.05 507.73v3.3159l-9.9476-1.638z" fill="#212830" fill-rule="evenodd"/>
+     <path id="path15" d="m706.6 507.73v3.3159l9.9476-1.638z" fill="#212830" fill-rule="evenodd"/>
+     <text id="text16" transform="translate(535.81 516.75)" fill="#000000" font-family="Arial" font-size="20.875px" font-weight="400" letter-spacing="0px" stroke-width=".55954" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan id="tspan16" x="0" y="0" sodipodi:role="line"><tspan id="tspan15" dx="0" dy="0" fill="#212830" font-family="Arial" font-size="20.875px" font-weight="400" stroke-width=".55954">230.363</tspan></tspan></text>
+    </g>
+    <g fill="none" stroke="#212830" stroke-linecap="round" stroke-linejoin="round" stroke-width=".55954">
+     <path id="path16" d="m755.02 496.34h61.483"/>
+     <path id="path17" d="m755.02 314.53h61.483"/>
+     <path id="path18" d="m816.3 486.39v-73.228"/>
+     <path id="path19" d="m816.3 324.47v73.228"/>
+    </g>
+    <path id="path20" d="m814.62 486.39h3.3159l-1.638 9.9476z" fill="#212830" fill-rule="evenodd"/>
+    <path id="path21" d="m814.62 324.47h3.3159l-1.638-9.9476z" fill="#212830" fill-rule="evenodd"/>
+    <g fill="#000000" font-weight="400" letter-spacing="0px" stroke-width=".55954" word-spacing="0px">
+     <text id="text22" transform="translate(748.98 412.8)" font-family="Arial" font-size="20.875px" style="line-height:125%" xml:space="preserve"><tspan id="tspan22" x="0" y="0" sodipodi:role="line"><tspan id="tspan21" dx="0" dy="0" fill="#212830" font-family="Arial" font-size="20.875px" font-weight="400" stroke-width=".55954">146.06294524</tspan></tspan></text>
+     <text id="text24" transform="translate(614.67 259.88)" font-family="Garamond" font-size="27.5px" style="line-height:125%" xml:space="preserve"><tspan id="tspan24" x="0" y="0" sodipodi:role="line"><tspan id="tspan23" dx="0" dy="0" fill="#212830" font-family="Garamond" font-size="27.5px" font-weight="400" stroke-width=".55954">A= 2996</tspan></tspan></text>
+     <text id="text26" transform="translate(627.9 289.96)" font-family="Garamond" font-size="27.5px" style="line-height:125%" xml:space="preserve"><tspan id="tspan26" x="0" y="0" sodipodi:role="line"><tspan id="tspan25" dx="0" dy="0" fill="#212830" font-family="Garamond" font-size="27.5px" font-weight="400" stroke-width=".55954">C= 194</tspan></tspan></text>
+    </g>
+    <path id="path26" d="m611.72 314.53-0.0399-1.9176-0.1598-1.9176-0.2397-1.8777-0.31961-1.9176-0.43945-1.8377-0.51935-1.8777-0.59925-1.7978-0.67915-1.7978-0.799-1.7178-0.8789-1.7179-0.9588-1.6779-1.0387-1.598-1.1186-1.558-1.1985-1.4782-1.2784-1.4382-1.3184-1.3982-1.3982-1.2784-1.4782-1.2385-1.5181-1.1586-1.598-1.0786-1.598-0.99875-1.7179-0.91885-1.7178-0.83895-1.7578-0.75905-1.7978-0.63921-1.8377-0.5593-1.8377-0.4794-1.8776-0.35955-1.9176-0.3196-1.8776-0.1598-1.9176-0.11985h-1.9176l-1.9176 0.11985-1.8776 0.1598-1.9176 0.3196-1.8777 0.35955-1.8377 0.4794-1.8377 0.5593-1.7978 0.63921-1.7578 0.75905-1.7178 0.83895-1.6779 0.91885-1.638 0.99875-1.598 1.0786-1.5181 1.1586-1.4782 1.2385-1.3983 1.2784-1.3184 1.3982-1.2784 1.4382-1.1985 1.4782-1.1186 1.558-1.0387 1.598-0.9588 1.6779-0.8789 1.7179-0.799 1.7178-0.67915 1.7978-0.59925 1.7978-0.51935 1.8777-0.43945 1.8377-0.3196 1.9176-0.2397 1.8777-0.1598 1.9176-0.0399 1.9176 0.0399 1.9176 0.1598 1.9176 0.2397 1.8776 0.3196 1.9176 0.43945 1.8377 0.51935 1.8776 0.59925 1.7978 0.67915 1.7978 0.799 1.7179 0.8789 1.7178 0.9588 1.6779 1.0387 1.598 1.1186 1.558 1.1985 1.4782 1.2784 1.4382 1.3184 1.3982 1.3983 1.2784 1.4782 1.2384 1.5181 1.1586 1.598 1.0786 1.638 0.99875 1.6779 0.91885 1.7178 0.83896 1.7578 0.75905 1.7978 0.6392 1.8377 0.5593 1.8377 0.4794 1.8777 0.35955 1.9176 0.3196 1.8776 0.1598 1.9176 0.11985h1.9176l1.9176-0.11985 1.8776-0.1598 1.9176-0.3196 1.8776-0.35955 1.8377-0.4794 1.8377-0.5593 1.7978-0.6392 1.7578-0.75905 1.7178-0.83896 1.6779-0.91885 1.638-0.99875 1.598-1.0786 1.5181-1.1586 1.4782-1.2384 1.3982-1.2784 1.3184-1.3982 1.2784-1.4382 1.1985-1.4782 1.1186-1.558 1.0387-1.598 0.9588-1.6779 0.8789-1.7178 0.799-1.7179 0.67915-1.7978 0.59925-1.7978 0.51935-1.8776 0.43945-1.8377 0.31961-1.9176 0.2397-1.8776 0.1598-1.9176z" fill="none" stroke="#f00" stroke-linecap="round" stroke-linejoin="round" stroke-width=".55954"/>
+    <path id="path27" d="m600.61 287.24-0.0799 0.1598 0.0399-0.19975z" fill="#212830" fill-rule="evenodd"/>
+    <g stroke-width=".55954">
+     <path id="path28" d="m600.57 287.24 13.703-36.195h0.27965" fill="none" stroke="#212830" stroke-linecap="round" stroke-linejoin="round"/>
+     <path id="path29" d="m754.94 496.34-0.0399-4.1948-0.1598-4.1948-0.2397-4.1948-0.3196-4.1948-0.43945-4.1548-0.5593-4.1948-0.59925-4.1548-0.71911-4.1149-0.83895-4.1148-0.91885-4.1149-0.99875-4.0749-1.1186-4.035-1.1586-4.035-1.3184-3.995-1.3583-3.995-1.4782-3.9151-1.558-3.9151-1.638-3.8352-1.7578-3.8352-1.8377-3.7952-1.8776-3.7154-2.0375-3.7154-2.0774-3.6355-2.1573-3.5955-2.2372-3.5556-2.357-3.4757-2.397-3.4357-2.4769-3.3958-2.5568-3.3158-2.6767-3.236-2.7166-3.196-2.7566-3.1561-2.8764-3.0762-2.9164-2.9963-3.0362-2.9563-3.0362-2.8364-3.1561-2.7965-3.196-2.7166-3.236-2.6367-3.3158-2.5968-3.3958-2.4769-3.4357-2.437-3.4757-2.3171-3.5556-2.2372-3.5955-2.1972-3.6355-2.0774-3.6754-1.9975-3.7553-1.9176-3.7553-1.8377-3.8352-1.7178-3.8352-1.6779-3.9151-1.558-3.9151-1.4782-3.955-1.3583-3.995-1.2784-4.035-1.1985-4.035-1.1186-4.0749-0.99875-4.1149-0.91885-4.1148-0.83895-4.1149-0.7191-4.1548-0.59926-4.1548-0.5593-4.1948-0.43945-4.1548-0.3196-4.1948-0.2397-4.1948-0.1598-4.1948-0.04-4.1948 0.04-4.1948 0.1598-4.1948 0.2397-4.1548 0.3196-4.1948 0.43945-4.1548 0.5593-4.1548 0.59926-4.1149 0.7191-4.1148 0.83895-4.1149 0.91885-4.0749 0.99875-4.035 1.1186-4.035 1.1985-3.995 1.2784-3.9551 1.3583-3.9151 1.4782-3.9151 1.558-3.8352 1.6779-3.8352 1.7178-3.7553 1.8377-3.7553 1.9176-3.6754 1.9975-3.6355 2.0774-3.5955 2.1972-3.5556 2.2372-3.4756 2.3171-3.4357 2.437-3.3958 2.4769-3.3158 2.5968-3.236 2.6367-3.196 2.7166-3.1561 2.7965-3.0362 2.8364-3.0362 2.9563-2.9164 2.9963-2.8764 3.0762-2.7566 3.1561-2.7166 3.196-2.6767 3.236-2.5568 3.3158-2.4769 3.3958-2.397 3.4357-2.357 3.4757-2.2372 3.5556-2.1573 3.5955-2.0774 3.6355-2.0375 3.7154-1.8776 3.7154-1.8377 3.7952-1.7578 3.8352-1.638 3.8352-1.558 3.9151-1.4782 3.9151-1.3583 3.995-1.3184 3.995-1.1586 4.035-1.1186 4.035-0.99875 4.0749-0.91885 4.1149-0.83895 4.1148-0.7191 4.1149-0.59926 4.1548-0.5593 4.1948-0.43945 4.1548-0.3196 4.1948-0.2397 4.1948-0.1598 4.1948-0.04 4.1948 0.04 4.1948 0.1598 4.1948 0.2397 4.1948 0.3196 4.1948 0.43945 4.1548 0.5593 4.1948 0.59926 4.1548 0.7191 4.1149 0.83895 4.1148 0.91885 4.1149 0.99875 4.0749 1.1186 4.035 1.1586 4.035 1.3184 3.995 1.3583 3.995 1.4782 3.9151 1.558 3.9151 1.638 3.8352 1.7578 3.8352 1.8377 3.7952 1.8776 3.7154 2.0375 3.7154 2.0774 3.6355 2.1573 3.5955 2.2372 3.5556 2.357 3.4757 2.397 3.4357 2.4769 3.3958 2.5568 3.3158 2.6767 3.236 2.7166 3.196 2.7566 3.1561 2.8764 3.0762 2.9164 2.9963 3.0362 2.9563 3.0362 2.8365 3.1561 2.7965 3.196 2.7166 3.236 2.6367 3.3158 2.5968 3.3958 2.4769 3.4357 2.437 3.4756 2.3171 3.5556 2.2372 3.5955 2.1972 3.6355 2.0774 3.6754 1.9975 3.7553 1.9176 3.7553 1.8377 3.8352 1.7179 3.8352 1.6779 3.9151 1.558 3.9151 1.4782 3.9551 1.3583 3.995 1.2784 4.035 1.1985 4.035 1.1186 4.0749 0.99875 4.1149 0.91885 4.1148 0.83895 4.1149 0.71911 4.1548 0.59925 4.1548 0.5593 4.1948 0.43945 4.1548 0.3196 4.1948 0.2397 4.1948 0.1598 4.1948 0.04 4.1948-0.04 4.1948-0.1598 4.1948-0.2397 4.1548-0.3196 4.1948-0.43945 4.1548-0.5593 4.1548-0.59925 4.1149-0.71911 4.1148-0.83895 4.1149-0.91885 4.0749-0.99875 4.035-1.1186 4.035-1.1985 3.995-1.2784 3.955-1.3583 3.9151-1.4782 3.9151-1.558 3.8352-1.6779 3.8352-1.7179 3.7553-1.8377 3.7553-1.9176 3.6754-1.9975 3.6355-2.0774 3.5955-2.1972 3.5556-2.2372 3.4757-2.3171 3.4357-2.437 3.3958-2.4769 3.3158-2.5968 3.236-2.6367 3.196-2.7166 3.1561-2.7965 3.0362-2.8365 3.0362-2.9563 2.9164-2.9963 2.8764-3.0762 2.7566-3.1561 2.7166-3.196 2.6767-3.236 2.5568-3.3158 2.4769-3.3958 2.397-3.4357 2.357-3.4757 2.2372-3.5556 2.1573-3.5955 2.0774-3.6355 2.0375-3.7154 1.8776-3.7154 1.8377-3.7952 1.7578-3.8352 1.638-3.8352 1.558-3.9151 1.4782-3.9151 1.3583-3.995 1.3184-3.995 1.1586-4.035 1.1186-4.035 0.99875-4.0749 0.91885-4.1149 0.83895-4.1148 0.71911-4.1149 0.59925-4.1548 0.5593-4.1948 0.43945-4.1548 0.3196-4.1948 0.2397-4.1948 0.1598-4.1948z" fill="none" stroke="#00f" stroke-linecap="round" stroke-linejoin="round"/>
+     <text id="text30" transform="translate(438.49 248.69)" fill="#000000" font-family="Arial" font-size="20.875px" font-weight="400" letter-spacing="0px" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan id="tspan30" x="0" y="0" sodipodi:role="line"><tspan id="tspan29" dx="0" dy="0" fill="#212830" font-family="Arial" font-size="20.875px" font-weight="400" stroke-width=".55954">R30.88</tspan></tspan></text>
+     <path id="path30" d="m504.93 241.34h18.097l22.891 33.318" fill="none" stroke="#212830" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <path id="path31" d="m547.28 273.74-2.7166 1.8776 6.9913 7.231z" fill="#212830" fill-rule="evenodd"/>
+    <g fill="none" stroke="#212830" stroke-linecap="round" stroke-linejoin="round" stroke-width=".55954">
+     <path id="path32" d="m396.66 538.69-70.432-55.61"/>
+     <path id="path33" d="m573.28 314.49-70.472-55.61"/>
+     <path id="path34" d="m332.54 475.41 76.065-96.559"/>
+     <path id="path35" d="m496.86 266.83-76.065 96.559"/>
+    </g>
+    <g>
+     <path id="path36" d="m331.27 474.37 2.5968 2.0774-7.4707 6.7915z" fill="#212830" fill-rule="evenodd"/>
+     <path id="path37" d="m495.54 265.79 2.5968 2.0774 4.8739-8.8689z" fill="#212830" fill-rule="evenodd"/>
+     <text id="text38" transform="translate(382.96 378.49)" fill="#000000" font-family="Arial" font-size="20.875px" font-weight="400" letter-spacing="0px" stroke-width=".55954" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan id="tspan38" x="0" y="0" sodipodi:role="line"><tspan id="tspan37" dx="0" dy="0" fill="#212830" font-family="Arial" font-size="20.875px" font-weight="400" stroke-width=".55954">229.38</tspan></tspan></text>
+    </g>
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width=".55954">
+     <path id="path38" d="m396.7 538.73h353.24" stroke="#0f0"/>
+     <g stroke="#212830">
+      <path id="path39" d="m396.7 538.81v169.67"/>
+      <path id="path40" d="m749.94 538.81v169.67"/>
+      <path id="path41" d="m406.65 708.23h135.47"/>
+      <path id="path42" d="m740 708.23h-135.47"/>
+     </g>
+    </g>
+    <path id="path43" d="m406.65 706.6v3.3159l-9.9476-1.6779z" fill="#212830" fill-rule="evenodd"/>
+    <path id="path44" d="m740 706.6v3.3159l9.9476-1.6779z" fill="#212830" fill-rule="evenodd"/>
+    <g fill="#000000" font-weight="400" letter-spacing="0px" stroke-width=".55954" word-spacing="0px">
+     <text id="text45" transform="translate(541.6 715.63)" font-family="Arial" font-size="20.875px" style="line-height:125%" xml:space="preserve"><tspan id="tspan45" x="0" y="0" sodipodi:role="line"><tspan id="tspan44" dx="0" dy="0" fill="#212830" font-family="Arial" font-size="20.875px" font-weight="400" stroke-width=".55954">284.07</tspan></tspan></text>
+     <g font-family="Garamond" font-size="19.812px">
+      <text id="text47" transform="translate(590.74 231.11)" style="line-height:125%" xml:space="preserve"><tspan id="tspan47" x="0" y="0" sodipodi:role="line"><tspan id="tspan46" dx="0" dy="0" fill="#212830" font-family="Garamond" font-size="19.812px" font-weight="400" stroke-width=".55954">LUNA</tspan></tspan></text>
+      <text id="text49" transform="translate(347.97 405.29)" style="line-height:125%" xml:space="preserve"><tspan id="tspan49" x="0" y="0" sodipodi:role="line"><tspan id="tspan48" dx="0" dy="0" fill="#212830" font-family="Garamond" font-size="19.812px" font-weight="400" stroke-width=".55954">TIERRA</tspan></tspan></text>
+      <text id="text51" transform="translate(479 452.43)" style="line-height:125%" xml:space="preserve"><tspan id="tspan51" x="0" y="0" sodipodi:role="line"><tspan id="tspan50" dx="0" dy="0" fill="#212830" font-family="Garamond" font-size="19.812px" font-weight="400" stroke-width=".55954">LA GRAN PIRÁMIDE</tspan></tspan></text>
+     </g>
+     <text id="text53" transform="translate(604 568.89)" font-family="Arial" font-size="20.875px" style="line-height:125%" xml:space="preserve"><tspan id="tspan53" x="0" y="0" sodipodi:role="line"><tspan id="tspan52" dx="0" dy="0" fill="#212830" font-family="Arial" font-size="20.875px" font-weight="400" stroke-width=".55954">R146.06</tspan></tspan></text>
+    </g>
+    <path id="path53" d="m681.99 561.54h9.9476l31.88 17.538" fill="none" stroke="#00f" stroke-linecap="round" stroke-linejoin="round" stroke-width=".55954"/>
+    <path id="path54" d="m724.61 577.6-1.598 2.9164 9.5081 3.3558z" fill="#00f" fill-rule="evenodd"/>
+   </g>
+  </g>
+ </g>
+ <metadata id="metadata2">
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:title>Coordenada 12.6 N, 12.6 E</dc:title>
+    <dc:date>03-02-2025</dc:date>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Miguel Hernando Ibáñez Sánchez</dc:title>
+     </cc:Agent>
+    </dc:creator>
+    <dc:rights>
+     <cc:Agent>
+      <dc:title>Coordenada 12.6 N, 12.6 E © 2025 by Miguel Hernando Ibáñez Sánchez is licensed under Creative Commons Attribution-NoDerivatives 4.0 International</dc:title>
+     </cc:Agent>
+    </dc:rights>
+    <dc:publisher>
+     <cc:Agent>
+      <dc:title>ISAN atelier academiae</dc:title>
+     </cc:Agent>
+    </dc:publisher>
+    <dc:source>Sáchica, Boyacá - Colombia</dc:source>
+    <dc:relation>Lo Oculto del Sendero de la Serpiente</dc:relation>
+    <dc:language>Español</dc:language>
+    <dc:subject>
+     <rdf:Bag>
+      <rdf:li>arquitectura sagrada</rdf:li>
+      <rdf:li>geometria sagrada</rdf:li>
+      <rdf:li>sacred architecture</rdf:li>
+      <rdf:li>sacred geometry</rdf:li>
+     </rdf:Bag>
+    </dc:subject>
+    <dc:coverage>Global</dc:coverage>
+    <dc:description>Estudios geométricos</dc:description>
+    <cc:license rdf:resource="http://creativecommons.org/licenses/by-nd/4.0/"/>
+   </cc:Work>
+   <cc:License rdf:about="http://creativecommons.org/licenses/by-nd/4.0/">
+    <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+    <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+    <cc:requires rdf:resource="http://creativecommons.org/ns#Notice"/>
+    <cc:requires rdf:resource="http://creativecommons.org/ns#Attribution"/>
+   </cc:License>
+  </rdf:RDF>
+ </metadata>
+</svg>

@@ -1,0 +1,15 @@
+{
+  "project": "ISAN Vitruvian Column Layout",
+  "version": "1.0.0",
+  "standard": "ISAN-2026",
+  "layout": {
+    "panel_max_height_px": 180,
+    "scrollbar_width_px": 3,
+    "glow_color": "neon-reactivo",
+    "scroll_synchronization": true
+  },
+  "audit": {
+    "status": "Audited",
+    "certifier": "ISAN Academia Centralis"
+  }
+}

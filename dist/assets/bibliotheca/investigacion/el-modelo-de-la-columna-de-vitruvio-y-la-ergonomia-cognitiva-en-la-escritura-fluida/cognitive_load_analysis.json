@@ -1,0 +1,18 @@
+{
+  "project": "ISAN Cognitive Load Analysis",
+  "version": "1.0.0",
+  "standard": "ISAN-2026",
+  "metrics": {
+    "debounce_time_ms": 1500,
+    "widget_floating_opacity": 0.13,
+    "stylistic_calibration_range": {
+      "min": "0%",
+      "max": "100%",
+      "engine": "isan-bridge"
+    }
+  },
+  "audit": {
+    "status": "Audited",
+    "certifier": "ISAN Academia Centralis"
+  }
+}

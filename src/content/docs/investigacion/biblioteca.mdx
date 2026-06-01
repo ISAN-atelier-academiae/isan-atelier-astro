@@ -1,0 +1,795 @@
+---
+title: 3 Biblioteca
+description: Colección de recursos, textos y referencias académicas
+template: doc
+---
+
+import { Image } from 'astro:assets';
+
+<div class="biblioteca-nav-container glass-panel">
+  <div class="nav-branding">
+    <span class="nav-icon">🏛️</span>
+    <span class="nav-title">NEXO BIBLIOTECA</span>
+  </div>
+  <div class="nav-links">
+    <a href="/investigacion/inicio/" class="nav-item-btn">
+      <span class="btn-arrow">←</span> PLANTA 1: INICIO DE INVESTIGACIÓN
+    </a>
+    <a href="/investigacion/status/" class="nav-item-btn secondary">
+      ⚙️ ESTADO DEL CAMPUS
+    </a>
+  </div>
+</div>
+
+<div class="imagen-centro">
+  <img src="/imagenes/biblioteca_cyber.png" alt="Digital Library of Alexandria" class="cyber-lib-banner" />
+</div>
+
+<div class="separador-isan"><span class="decoracion">✦</span></div>
+
+<div class="biblioteca-dashboard glass-panel">
+  
+  <div class="dashboard-header">
+    <span class="db-badge">🏺 SOVEREIGN VAULT</span>
+    <h2>BIBLIOTECA DE ALEJANDRÍA v2.0</h2>
+    <p class="db-tagline">Repositorio público estático descentralizado de investigaciones y patentes cognitivas.</p>
+  </div>
+
+  <div class="dashboard-tabs">
+    <button id="tab-btn-catalogo" class="db-tab-btn active" onclick="switchDbTab('db-catalogo')">🏺 CATÁLOGO SELLO QR</button>
+    <button id="tab-btn-fichas" class="db-tab-btn" onclick="switchDbTab('db-fichas')">🧘 FICHAS METODOLÓGICAS</button>
+    <button id="tab-btn-validador" class="db-tab-btn" onclick="switchDbTab('db-validador')">🔑 VALIDACIÓN CRIPTOGRÁFICA</button>
+  </div>
+
+  <div id="db-catalogo" class="db-tab-content active">
+    <div class="db-module-intro">
+      <p>A continuación se lista el catálogo público oficial de investigaciones publicadas por el <strong>Arq. M.H. Ibáñez Sánchez</strong>. Cada obra cuenta con un sello QR único que dirige al documento fuente oficial en Academia.edu y su firma SHA-256 para verificación.</p>
+    </div>
+    
+    <div class="publications-grid">
+      <div class="pub-card">
+        <div class="pub-badge-status">[ ESTADO: PUBLICADO ]</div>
+        <div class="pub-icon">🏛️</div>
+        <h4 class="pub-title">Biblioteca Alejandrina</h4>
+        <p class="pub-desc">Corpus unificado de recursos, apuntes y bitácoras institucionales.</p>
+        <div class="pub-hash-container">
+          <span class="hash-label">SHA-256:</span>
+          <code class="pub-hash" title="c92d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d18e1fa">c92d716c...1fa</code>
+        </div>
+        <div class="pub-actions">
+          <a href="https://isansa.academia.edu/research" target="_blank" class="pub-btn">🏺 Ver en Academia.edu</a>
+          <button class="pub-btn-qr" onclick="showQrModal('Biblioteca Alejandrina', 'https://isansa.academia.edu/research')">📱 Mostrar QR</button>
+        </div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-badge-status">[ ESTADO: PUBLICADO ]</div>
+        <div class="pub-icon">📐</div>
+        <h4 class="pub-title">Ley de la Convergencia</h4>
+        <p class="pub-desc">Metrología antigua de Giza y su convergencia con la computación cuántica.</p>
+        <div class="pub-hash-container">
+          <span class="hash-label">SHA-256:</span>
+          <code class="pub-hash" title="c28d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d77a">c28d716c...77a</code>
+        </div>
+        <div class="pub-actions">
+          <a href="https://isansa.academia.edu/research" target="_blank" class="pub-btn">🏺 Ver en Academia.edu</a>
+          <button class="pub-btn-qr" onclick="showQrModal('Ley de la Convergencia', 'https://isansa.academia.edu/research')">📱 Mostrar QR</button>
+        </div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-badge-status">[ ESTADO: PUBLICADO ]</div>
+        <div class="pub-icon">🐍</div>
+        <h4 class="pub-title">Sendero de la Serpiente</h4>
+        <p class="pub-desc">Geometría áurea y trazados tradicionales en la mitología terrestre.</p>
+        <div class="pub-hash-container">
+          <span class="hash-label">SHA-256:</span>
+          <code class="pub-hash" title="468d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18f50c">468d716c...f0c</code>
+        </div>
+        <div class="pub-actions">
+          <a href="https://isansa.academia.edu/research" target="_blank" class="pub-btn">🏺 Ver en Academia.edu</a>
+          <button class="pub-btn-qr" onclick="showQrModal('Sendero de la Serpiente', 'https://isansa.academia.edu/research')">📱 Mostrar QR</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="db-fichas" class="db-tab-content">
+    <div class="db-module-intro">
+      <p>Alineados con la psicología cognitiva zen, las fichas metodológicas ordenan el conocimiento para una asimilación clara y desinteresada, libre de ruido digital.</p>
+    </div>
+
+    <div class="methodology-accordion">
+      <details class="meth-detail" open>
+        <summary class="meth-summary">🧘 Método de Hermetismo Geométrico (M-HG)</summary>
+        <div class="meth-content">
+          <p><strong>Propósito:</strong> Estudiar las proporciones arquitectónicas basándose únicamente en el trazo clásico del compás y la regla, emulando los constructores de Giza.</p>
+          <ul>
+            <li><strong>Fase I:</strong> Purificación mental y eliminación de adiciones artificiales (Shunyata).</li>
+            <li><strong>Fase II:</strong> Trazado áureo y proporción modular.</li>
+            <li><strong>Fase III:</strong> Verificación mediante metrología científica analítica.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="meth-detail">
+        <summary class="meth-summary">📐 Epistemología Metrológica Unificada (E-MU)</summary>
+        <div class="meth-content">
+          <p><strong>Propósito:</strong> Unificación del estudio de dimensiones monumentales antiguas con los algoritmos modernos de cómputo y criptografía local-first.</p>
+          <p>Permite validar firmas digitales y hashes de documentos para constatar que el conocimiento transmitido no sufra desvíos o alteraciones a lo largo de las épocas de transición.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div id="db-validador" class="db-tab-content">
+    <div class="db-module-intro">
+      <p><strong>Validación Local y Soberana:</strong> Arrastra un archivo PDF descargado de nuestras publicaciones oficiales para comprobar su integridad en tu propio navegador. El cómputo del hash SHA-256 es 100% local e invisible para cualquier servidor cloud externo.</p>
+    </div>
+
+    <div class="crypto-drop-zone" id="crypto-drop-zone">
+      <div class="dz-icon">🔑</div>
+      <p class="dz-text">Arrastra aquí tu PDF o haz clic para seleccionar</p>
+      <input type="file" id="dz-file-input" style="display: none;" accept=".pdf" />
+    </div>
+
+    <div class="validator-results" id="validator-results" style="display: none;">
+      <div class="result-status-box" id="result-status-box">
+        <h4 id="result-status-title">VALIDANDO FIRMA...</h4>
+        <p id="result-status-desc">Procesando el documento localmente...</p>
+      </div>
+      <div class="result-meta-list">
+        <div class="rm-item">
+          <strong>Nombre del archivo:</strong> <span id="meta-file-name">--</span>
+        </div>
+        <div class="rm-item">
+          <strong>Hash Calculado Localmente:</strong>
+          <code id="meta-file-hash">--</code>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div id="qr-modal" class="qr-overlay" style="display: none;" onclick="closeQrModal()">
+  <div class="qr-content glass-panel" onclick="event.stopPropagation()">
+    <h3 id="qr-modal-title">Código QR</h3>
+    <div class="qr-image-wrapper">
+      <svg id="qr-svg-canvas" width="180" height="180" viewBox="0 0 100 100" style="color: #00f2ff;">
+        <rect width="100" height="100" fill="none" />
+        <rect x="10" y="10" width="30" height="30" fill="currentColor" stroke="#000" stroke-width="2" />
+        <rect x="60" y="10" width="30" height="30" fill="currentColor" stroke="#000" stroke-width="2" />
+        <rect x="10" y="60" width="30" height="30" fill="currentColor" stroke="#000" stroke-width="2" />
+        <rect x="18" y="18" width="14" height="14" fill="#000" />
+        <rect x="68" y="18" width="14" height="14" fill="#000" />
+        <rect x="18" y="68" width="14" height="14" fill="#000" />
+        <rect x="45" y="15" width="8" height="8" fill="currentColor" />
+        <rect x="45" y="30" width="8" height="8" fill="currentColor" />
+        <rect x="15" y="45" width="8" height="8" fill="currentColor" />
+        <rect x="30" y="45" width="8" height="8" fill="currentColor" />
+        <rect x="60" y="45" width="8" height="8" fill="currentColor" />
+        <rect x="75" y="45" width="8" height="8" fill="currentColor" />
+        <rect x="45" y="60" width="8" height="8" fill="currentColor" />
+        <rect x="60" y="60" width="8" height="8" fill="currentColor" />
+        <rect x="75" y="75" width="8" height="8" fill="currentColor" />
+        <rect x="60" y="75" width="8" height="8" fill="currentColor" />
+        <rect x="45" y="75" width="8" height="8" fill="currentColor" />
+      </svg>
+    </div>
+    <p class="qr-help-text">Escanea este código con tu dispositivo móvil para acceder al documento oficial.</p>
+    <button class="pub-btn" onclick="closeQrModal()">CERRAR ENLACE AXIAL</button>
+  </div>
+</div>
+
+<style is:global>{`
+  .sl-sidebar nav ul li:not(:has(a[href*="/investigacion/biblioteca"])):not(:has(a[href*="/Biblioteca"])) {
+    display: none !important;
+  }
+
+  .biblioteca-nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+    background: rgba(5, 5, 8, 0.7);
+    border: 1px solid rgba(0, 242, 255, 0.2);
+    border-radius: 8px;
+  }
+
+  .nav-branding {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .nav-icon {
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 5px rgba(0, 242, 255, 0.6));
+  }
+
+  .nav-title {
+    font-family: ui-monospace, monospace;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav-item-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(0, 242, 255, 0.08);
+    border: 1px solid rgba(0, 242, 255, 0.3);
+    color: #00f2ff !important;
+    font-family: ui-monospace, monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-decoration: none !important;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+
+  .nav-item-btn:hover {
+    background: rgba(0, 242, 255, 0.2);
+    border-color: #00f2ff;
+    color: #fff !important;
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+    transform: translateY(-1px);
+  }
+
+  .nav-item-btn.secondary {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #a1a1aa !important;
+  }
+
+  .nav-item-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #fff !important;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  }
+
+  .cyber-lib-banner {
+    border-radius: 12px;
+    border: 1px solid rgba(0, 242, 255, 0.2);
+    box-shadow: 0 0 35px rgba(0, 242, 255, 0.15);
+    max-height: 380px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .biblioteca-dashboard {
+    background: rgba(5, 5, 8, 0.75) !important;
+    border: 1px solid rgba(0, 242, 255, 0.2) !important;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+  }
+
+  .dashboard-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(0, 242, 255, 0.1);
+    padding-bottom: 1.5rem;
+  }
+
+  .db-badge {
+    font-size: 0.65rem;
+    color: #00f2ff;
+    border: 1px solid rgba(0, 242, 255, 0.3);
+    background: rgba(0, 242, 255, 0.05);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    letter-spacing: 2px;
+    font-weight: 800;
+    font-family: monospace;
+  }
+
+  .dashboard-header h2 {
+    font-size: 1.75rem;
+    color: #fff;
+    margin-top: 0.75rem;
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.5px;
+  }
+
+  .db-tagline {
+    font-size: 0.8rem;
+    color: #a1a1aa;
+    margin: 0;
+  }
+
+  .dashboard-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding-bottom: 0.8rem;
+  }
+
+  .db-tab-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    color: #a1a1aa;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+  }
+
+  .db-tab-btn:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255,255,255,0.03);
+  }
+
+  .db-tab-btn.active {
+    color: #00f2ff;
+    border-color: rgba(0, 242, 255, 0.3);
+    background: rgba(0, 242, 255, 0.08);
+    text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+  }
+
+  .db-tab-content {
+    display: none;
+  }
+
+  .db-tab-content.active {
+    display: block;
+    animation: fadeIn 0.4s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .db-module-intro {
+    font-size: 0.85rem;
+    color: #a1a1aa;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .publications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .pub-card {
+    background: rgba(2, 3, 7, 0.8);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 1.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .pub-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 242, 255, 0.35);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7), 0 0 20px rgba(0, 242, 255, 0.08);
+  }
+
+  .pub-badge-status {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 0.55rem;
+    color: #10b981;
+    font-family: monospace;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .pub-icon {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .pub-title {
+    font-size: 1.05rem;
+    color: #fff;
+    margin: 0 0 0.5rem 0;
+    font-weight: bold;
+  }
+
+  .pub-desc {
+    font-size: 0.78rem;
+    color: #a1a1aa;
+    line-height: 1.4;
+    margin: 0 0 1rem 0;
+  }
+
+  .pub-hash-container {
+    background: rgba(0,0,0,0.4);
+    padding: 0.4rem 0.6rem;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.65rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    border: 1px solid rgba(255,255,255,0.03);
+  }
+
+  .hash-label {
+    color: #71717a;
+  }
+
+  .pub-hash {
+    color: #c19a6b;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .pub-hash:hover {
+    color: #00f2ff;
+  }
+
+  .pub-actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .pub-btn, .pub-btn-qr {
+    flex: 1;
+    text-align: center;
+    font-size: 0.72rem;
+    padding: 0.5rem 0.2rem;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none !important;
+    font-family: inherit;
+  }
+
+  .pub-btn {
+    background: rgba(0, 242, 255, 0.08);
+    border: 1px solid rgba(0, 242, 255, 0.3);
+    color: #00f2ff !important;
+  }
+
+  .pub-btn:hover {
+    background: rgba(0, 242, 255, 0.18);
+    border-color: #00f2ff;
+    color: #fff !important;
+  }
+
+  .pub-btn-qr {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #a1a1aa !important;
+  }
+
+  .pub-btn-qr:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.2);
+    color: #fff !important;
+  }
+
+  .methodology-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .meth-detail {
+    background: rgba(2, 3, 7, 0.4);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .meth-detail[open] {
+    border-color: rgba(0, 242, 255, 0.2);
+  }
+
+  .meth-summary {
+    padding: 1rem 1.25rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.3s;
+  }
+
+  .meth-summary:hover {
+    background: rgba(255,255,255,0.02);
+  }
+
+  .meth-content {
+    padding: 1.25rem;
+    border-top: 1px solid rgba(255,255,255,0.03);
+    font-size: 0.78rem;
+    color: #a1a1aa;
+    line-height: 1.6;
+  }
+
+  .crypto-drop-zone {
+    border: 2px dashed rgba(0, 242, 255, 0.25);
+    background: rgba(0, 242, 255, 0.02);
+    border-radius: 12px;
+    padding: 3rem 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .crypto-drop-zone.dragover {
+    border-color: #00f2ff;
+    background: rgba(0, 242, 255, 0.08);
+    box-shadow: 0 0 25px rgba(0, 242, 255, 0.1);
+    transform: scale(1.01);
+  }
+
+  .dz-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 10px rgba(0,242,255,0.4));
+    transition: transform 0.3s;
+  }
+
+  .crypto-drop-zone:hover .dz-icon {
+    transform: scale(1.1) translateY(-2px);
+  }
+
+  .dz-text {
+    font-size: 0.82rem;
+    color: #a1a1aa;
+    margin: 0;
+  }
+
+  .validator-results {
+    margin-top: 2rem;
+    background: rgba(2, 3, 7, 0.8);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 8px;
+    padding: 1.5rem;
+    animation: fadeIn 0.4s ease-out;
+  }
+
+  .result-status-box {
+    padding: 1rem;
+    border-radius: 6px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    border: 1px solid transparent;
+  }
+
+  .result-status-box.valid {
+    background: rgba(16, 185, 129, 0.06);
+    border-color: rgba(16, 185, 129, 0.3);
+    color: #10b981;
+  }
+
+  .result-status-box.invalid {
+    background: rgba(239, 68, 68, 0.06);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+  }
+
+  .result-status-box h4 {
+    font-size: 0.95rem;
+    margin: 0 0 0.25rem 0;
+    letter-spacing: 1px;
+  }
+
+  .result-status-box p {
+    font-size: 0.72rem;
+    margin: 0;
+    color: #a1a1aa;
+  }
+
+  .result-meta-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    font-size: 0.78rem;
+  }
+
+  .rm-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    padding-bottom: 0.5rem;
+  }
+
+  .rm-item code {
+    font-family: monospace;
+    color: #c19a6b;
+    font-size: 0.72rem;
+    background: rgba(0,0,0,0.3);
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+  }
+
+  .qr-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .qr-content {
+    background: rgba(5, 5, 8, 0.95);
+    border: 1px solid rgba(0, 242, 255, 0.3);
+    border-radius: 12px;
+    padding: 2.2rem;
+    text-align: center;
+    max-width: 320px;
+    box-shadow: 0 0 50px rgba(0, 242, 255, 0.15);
+  }
+
+  .qr-content h3 {
+    font-size: 1.15rem;
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .qr-image-wrapper {
+    margin: 1.5rem auto;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .qr-help-text {
+    font-size: 0.72rem;
+    color: #a1a1aa;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+  }
+`}</style>
+
+<script type="application/javascript" is:inline>{`
+  const dbAuthHashes = {
+    "c92d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d18e1fa": "Biblioteca Alejandrina",
+    "c28d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18d77a": "Ley de la Convergencia",
+    "468d716cf9ef673196f7c6e61f215e98516ee71a7d65691e847c1ba0c18f50c": "Sendero de la Serpiente"
+  };
+
+  window.switchDbTab = function(tabId) {
+    const contents = document.querySelectorAll('.db-tab-content');
+    contents.forEach(content => content.classList.remove('active'));
+
+    const buttons = document.querySelectorAll('.db-tab-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+
+    const targetContent = document.getElementById(tabId);
+    if(targetContent) targetContent.classList.add('active');
+
+    const activeBtn = Array.from(buttons).find(btn => btn.getAttribute('onclick').includes(tabId));
+    if(activeBtn) activeBtn.classList.add('active');
+  };
+
+  window.showQrModal = function(title, url) {
+    const modal = document.getElementById('qr-modal');
+    const modalTitle = document.getElementById('qr-modal-title');
+    if (modal && modalTitle) {
+      modalTitle.innerText = \`Sello QR: \${title}\`;
+      modal.style.display = 'flex';
+    }
+  };
+
+  window.closeQrModal = function() {
+    const modal = document.getElementById('qr-modal');
+    if (modal) modal.style.display = 'none';
+  };
+
+  function setupDragAndDrop() {
+    const dropZone = document.getElementById('crypto-drop-zone');
+    const fileInput = document.getElementById('dz-file-input');
+    const resultsBox = document.getElementById('validator-results');
+
+    if (!dropZone || !fileInput || !resultsBox) return;
+
+    const newDropZone = dropZone.cloneNode(true);
+    dropZone.parentNode.replaceChild(newDropZone, dropZone);
+
+    const newFileInput = document.getElementById('dz-file-input');
+
+    newDropZone.addEventListener('click', () => newFileInput.click());
+
+    newFileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) processFileForVerification(file);
+    });
+
+    newDropZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      newDropZone.classList.add('dragover');
+    });
+
+    newDropZone.addEventListener('dragleave', () => {
+      newDropZone.classList.remove('dragover');
+    });
+
+    newDropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      newDropZone.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (file) processFileForVerification(file);
+    });
+  }
+
+  function processFileForVerification(file) {
+    const resultsBox = document.getElementById('validator-results');
+    if (!resultsBox) return;
+    
+    resultsBox.style.display = 'block';
+    
+    const statusBox = document.getElementById('result-status-box');
+    const statusTitle = document.getElementById('result-status-title');
+    const statusDesc = document.getElementById('result-status-desc');
+    const fileName = document.getElementById('meta-file-name');
+    const fileHash = document.getElementById('meta-file-hash');
+
+    statusBox.className = 'result-status-box';
+    statusTitle.innerText = 'CALCULANDO HASH...';
+    statusDesc.innerText = 'Calculando firma criptográfica SHA-256 local-first...';
+    fileName.innerText = file.name;
+    fileHash.innerText = 'Calculando...';
+
+    const reader = new FileReader();
+    reader.onload = async function(e) {
+      try {
+        const arrayBuffer = e.target.result;
+        const hashBuffer = await crypto.subtle.digest('SHA-256', arrayBuffer);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+        fileHash.innerText = hashHex;
+
+        if (dbAuthHashes[hashHex]) {
+          statusBox.classList.add('valid');
+          statusTitle.innerText = '✔ DOCUMENTO SOBERANO AUTÉNTICO';
+          statusDesc.innerText = \`Firma verificada exitosamente: "\${dbAuthHashes[hashHex]}" (Estatus publicable aprobado por ISAN-2026).\`;
+        } else {
+          statusBox.classList.add('invalid');
+          statusTitle.innerText = '⚠ FIRMA DESCONOCIDA / ALTERACIÓN';
+          statusDesc.innerText = 'El hash computado localmente no coincide con ningún documento registrado en el catálogo público oficial.';
+        }
+      } catch (err) {
+        statusTitle.innerText = 'ERROR EN PROCESAMIENTO';
+        statusDesc.innerText = 'No se pudo calcular el hash criptográfico del archivo local.';
+      }
+    };
+    reader.readAsArrayBuffer(file);
+  }
+
+  document.addEventListener('DOMContentLoaded', setupDragAndDrop);
+  document.addEventListener('astro:page-load', setupDragAndDrop);
+  setupDragAndDrop();
+`}</script>

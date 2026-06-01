@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="130mm"
+   height="100mm"
+   viewBox="0 0 130 100"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   inkscape:export-filename="vesica pescis.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   sodipodi:docname="vesica pescis.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.1990881"
+     inkscape:cx="396.55134"
+     inkscape:cy="561.25984"
+     inkscape:window-width="2880"
+     inkscape:window-height="1585"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" /><defs
+     id="defs1"><style
+       id="style1">
+      .edge{stroke:#444;stroke-width:2}
+      .diag{stroke:#1e88e5;stroke-width:3}
+      .diag2{stroke:#43a047;stroke-width:3}
+      .label{font-family:system-ui,Segoe UI,Arial; font-size:14px; fill:#222}
+    </style><style
+       id="style1-8">
+      .edge{stroke:#444;stroke-width:3}
+      .measure{stroke:#c33;stroke-width:2}
+      .label{font-family:system-ui,Segoe UI,Arial; font-size:14px; fill:#222}
+      .tick{stroke:#888;stroke-width:1}
+    </style><style
+       id="style1-2">
+      .axis{stroke:#888;stroke-width:1;stroke-dasharray:4 4}
+      .circle{fill:none;stroke:#0b6;stroke-width:3}
+      .measure{stroke:#c33;stroke-width:2}
+      .label{font-family:system-ui,Segoe UI,Arial; font-size:14px; fill:#222}
+    </style></defs><g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"><g
+       id="g1"
+       transform="matrix(0.26458333,0,0,0.26458333,-27.263142,-1.3143665)"><circle
+         class="circle"
+         cx="275"
+         cy="200"
+         r="150"
+         id="circle1" /><circle
+         class="circle"
+         cx="425"
+         cy="200"
+         r="150"
+         id="circle2" /><line
+         class="measure"
+         x1="125"
+         y1="340"
+         x2="575"
+         y2="340"
+         id="line2" /><text
+         class="label"
+         x="350"
+         y="360"
+         text-anchor="middle"
+         id="text2">ancho = 2R</text><line
+         class="measure"
+         x1="350"
+         y1="70"
+         x2="350"
+         y2="330"
+         id="line3" /><text
+         class="label"
+         x="360"
+         y="205"
+         id="text3">alto = √3·R</text><circle
+         cx="275"
+         cy="200"
+         r="3"
+         fill="#000000"
+         id="circle3" /><circle
+         cx="425"
+         cy="200"
+         r="3"
+         fill="#000000"
+         id="circle4" /><line
+         class="axis"
+         x1="275"
+         y1="200"
+         x2="425"
+         y2="200"
+         id="line4" /><text
+         class="label"
+         x="350"
+         y="190"
+         text-anchor="middle"
+         id="text4">|O₁O₂| = R</text><text
+         class="label"
+         x="275"
+         y="190"
+         text-anchor="middle"
+         id="text5">O₁</text><text
+         class="label"
+         x="425"
+         y="190"
+         text-anchor="middle"
+         id="text6">O₂</text><text
+         class="label"
+         x="400"
+         y="30"
+         text-anchor="middle"
+         id="text7">Vesica Piscis — relación 1:√3</text></g></g></svg>

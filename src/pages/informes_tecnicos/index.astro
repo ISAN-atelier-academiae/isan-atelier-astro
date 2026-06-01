@@ -1,0 +1,844 @@
+---
+import fs from 'fs';
+import path from 'path';
+
+// Define the directory for technical reports inside Quartz content
+const reportsDir = 'S:/Proiecta/quartz_web/content/informes_tecnicos';
+
+// Read and parse all Markdown files (excluding index.md)
+let reports = [];
+try {
+  const files = fs.readdirSync(reportsDir);
+  reports = files
+    .filter(file => file.endsWith('.md') && file !== 'index.md')
+    .map(file => {
+      const filePath = path.join(reportsDir, file);
+      const content = fs.readFileSync(filePath, 'utf-8');
+      
+      // Parse frontmatter (robust YAML-like extraction)
+      const frontmatterMatch = content.match(/^---\r?\n([\s\S]+?)\r?\n---/);
+      const frontmatter: Record<string, string> = {};
+      if (frontmatterMatch) {
+        frontmatterMatch[1].split('\n').forEach(line => {
+          const colonIdx = line.indexOf(':');
+          if (colonIdx > 0) {
+            const key = line.substring(0, colonIdx).trim();
+            let val = line.substring(colonIdx + 1).trim();
+            // Remove surrounding quotes if present
+            if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+              val = val.substring(1, val.length - 1);
+            }
+            frontmatter[key] = val;
+          }
+        });
+      }
+
+      // Extract ID from filename (e.g., INFORME_0017_Mediateca... -> 17)
+      const idMatch = file.match(/INFORME_(\d+)_/);
+      const idStr = idMatch ? idMatch[1] : '0000';
+      const id = parseInt(idStr, 10);
+
+      // Extract raw body
+      const bodyContent = frontmatterMatch ? content.substring(frontmatterMatch[0].length).trim() : content;
+      
+      // Extract Description Section nicely
+      let descriptionText = '';
+      const descSection = bodyContent.match(/## Descripcion\r?\n([\s\S]+)/i);
+      if (descSection) {
+        descriptionText = descSection[1].trim();
+      } else {
+        descriptionText = bodyContent
+          .replace(/##[\s\S]*?\n/g, '') // Remove subheadings
+          .replace(/\|[\s\S]*?\n/g, '') // Remove tables
+          .trim();
+      }
+
+      // Safe clean up for display
+      const cleanDesc = descriptionText
+        .replace(/\r?\n/g, ' ')
+        .replace(/\s+/g, ' ');
+
+      return {
+        slug: file.replace('.md', ''),
+        id,
+        idStr,
+        title: frontmatter.title || `Informe #${idStr}`,
+        date: frontmatter.date || '2026-06-01',
+        tipo: frontmatter.tipo || 'Upgrade',
+        modulo: frontmatter.modulo || 'General',
+        status: frontmatter.status || 'Completado',
+        prioridad: parseInt(frontmatter.prioridad, 10) || 3,
+        descriptionFull: descriptionText,
+        descriptionSnippet: cleanDesc.length > 150 ? cleanDesc.substring(0, 147) + '...' : cleanDesc,
+        rawContent: bodyContent
+      };
+    })
+    .sort((a, b) => b.id - a.id);
+} catch (e) {
+  console.error("Error reading reports:", e);
+}
+
+// Compute metrics
+const totalReports = reports.length;
+const upgradeCount = reports.filter(r => r.tipo.toLowerCase() === 'upgrade').length;
+const bugCount = reports.filter(r => r.tipo.toLowerCase() === 'bug').length;
+const maintCount = reports.filter(r => r.tipo.toLowerCase() === 'mantenimiento').length;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atrio de Informes Técnicos // ISAN Academia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  
+  <style>
+    :root {
+      --font-sans: 'Outfit', sans-serif;
+      --font-serif: 'Source Serif Pro', serif;
+      --color-gold: #FFD700;
+      --color-gold-glow: rgba(255, 215, 0, 0.3);
+      --color-obsidian: #0A0C10;
+      --color-obsidian-light: #12161F;
+      --color-glass-bg: rgba(18, 22, 31, 0.7);
+      --color-glass-border: rgba(255, 255, 255, 0.08);
+      --color-neon-blue: #00F2FF;
+      --color-neon-red: #FF3B30;
+      --color-neon-green: #34C759;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--color-obsidian) 0%, #12161F 100%);
+      color: #E2E8F0;
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-bottom: 5rem;
+      position: relative;
+    }
+
+    /* Starry background grid watermark */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(circle at center, black, transparent 90%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Outer glow accents */
+    .glow-sphere {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.05) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    header {
+      border-bottom: 1px solid var(--color-glass-border);
+      padding: 3rem 2rem 2.5rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .subtitle-accent {
+      color: var(--color-gold);
+      font-size: 0.85rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      text-shadow: 0px 0px 10px var(--color-gold-glow);
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: #FFFFFF;
+      margin-bottom: 1rem;
+    }
+
+    .desc-header {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: #A0AEC0;
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .main-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Grid layout for Dashboard */
+    .dashboard-layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    /* Sidebar controls */
+    .sidebar-panel {
+      background: var(--color-glass-bg);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid var(--color-glass-border);
+      border-radius: 12px;
+      padding: 2rem;
+      height: fit-content;
+      position: sticky;
+      top: 2rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .panel-section-title {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #A0AEC0;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      border-bottom: 1px solid var(--color-glass-border);
+      padding-bottom: 0.5rem;
+    }
+
+    /* Counter metrics list */
+    .metrics-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .metric-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+    }
+
+    .metric-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #CBD5E0;
+    }
+
+    .metric-value {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--color-gold);
+    }
+
+    /* Search/Filter Inputs */
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--color-glass-border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: white;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--color-gold);
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
+    }
+
+    .select-dropdown {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--color-glass-border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: #A0AEC0;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      cursor: pointer;
+      appearance: none;
+      transition: all 0.3s ease;
+    }
+
+    .select-dropdown:focus {
+      outline: none;
+      border-color: var(--color-gold);
+    }
+
+    /* Content Area */
+    .content-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* Premium interactive cards */
+    .report-card {
+      background: var(--color-glass-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--color-glass-border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .report-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--color-gold);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .report-card:hover {
+      transform: translateY(-3px) scale(1.01);
+      border-color: rgba(255, 215, 0, 0.25);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .report-card:hover::after {
+      opacity: 1;
+    }
+
+    .report-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .report-meta {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .report-date {
+      font-size: 0.8rem;
+      color: #718096;
+      font-weight: 600;
+    }
+
+    .report-id {
+      font-size: 0.75rem;
+      background: rgba(255, 215, 0, 0.1);
+      color: var(--color-gold);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-upgrade {
+      background: rgba(0, 242, 255, 0.1);
+      color: var(--color-neon-blue);
+      border: 1px solid rgba(0, 242, 255, 0.2);
+    }
+
+    .badge-bug {
+      background: rgba(255, 59, 48, 0.1);
+      color: var(--color-neon-red);
+      border: 1px solid rgba(255, 59, 48, 0.2);
+    }
+
+    .badge-maint {
+      background: rgba(52, 199, 89, 0.1);
+      color: var(--color-neon-green);
+      border: 1px solid rgba(52, 199, 89, 0.2);
+    }
+
+    .report-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 0.75rem;
+    }
+
+    .report-module {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #A0AEC0;
+      margin-bottom: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .report-module::before {
+      content: "📁";
+      font-size: 0.85rem;
+    }
+
+    .report-desc {
+      font-family: var(--font-serif);
+      color: #CBD5E0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* Modal / Drawer details panel */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 5, 5, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .drawer-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer-body {
+      width: 100%;
+      max-width: 650px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--color-obsidian-light) 0%, var(--color-obsidian) 100%);
+      border-left: 1px solid var(--color-glass-border);
+      box-shadow: -10px 0 50px rgba(0, 0, 0, 0.6);
+      padding: 3.5rem 2.5rem;
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .drawer-overlay.active .drawer-body {
+      transform: translateX(0);
+    }
+
+    .drawer-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: transparent;
+      border: 1px solid var(--color-glass-border);
+      color: #A0AEC0;
+      font-size: 1.2rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .drawer-close:hover {
+      border-color: var(--color-gold);
+      color: var(--color-gold);
+      transform: rotate(90deg);
+    }
+
+    .drawer-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .drawer-report-id {
+      font-size: 0.8rem;
+      color: var(--color-gold);
+      letter-spacing: 2px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .drawer-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.2;
+    }
+
+    .drawer-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--color-glass-border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin: 1rem 0;
+    }
+
+    .drawer-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .drawer-meta-label {
+      font-size: 0.7rem;
+      color: #718096;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .drawer-meta-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #E2E8F0;
+    }
+
+    .drawer-description-box {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #E2E8F0;
+      white-space: pre-wrap;
+      border-top: 1px solid var(--color-glass-border);
+      padding-top: 1.5rem;
+    }
+
+    /* Back button */
+    .back-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--color-glass-border);
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      color: #A0AEC0;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin-bottom: 2rem;
+      cursor: pointer;
+    }
+
+    .back-nav-btn:hover {
+      border-color: var(--color-gold);
+      color: white;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
+      transform: translateX(-3px);
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: var(--color-glass-bg);
+      border: 1px solid var(--color-glass-border);
+      border-radius: 12px;
+      color: #A0AEC0;
+    }
+
+    @media (max-width: 968px) {
+      .dashboard-layout {
+        grid-template-columns: 1fr;
+      }
+      .sidebar-panel {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow-sphere"></div>
+  
+  <header>
+    <div class="subtitle-accent">ISAN ACADEMIA CENTRALIS</div>
+    <h1>Atrio de Informes Técnicos</h1>
+    <p class="desc-header">Auditoría, hitos arquitectónicos y registro histórico de actualizaciones de la flota digital soberana.</p>
+  </header>
+
+  <main class="main-container">
+    
+    <div class="dashboard-layout">
+      <!-- Sidebar Panel (Metrics & Filters) -->
+      <aside class="sidebar-panel">
+        <a href="/" class="back-nav-btn">
+          <span>← Volver al Portal</span>
+        </a>
+
+        <div class="panel-section-title">Contabilidad de Cambios</div>
+        <div class="metrics-list">
+          <div class="metric-card">
+            <span class="metric-label">Total de Informes</span>
+            <span class="metric-value" id="stats-total">{totalReports}</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Actualizaciones (Upgrade)</span>
+            <span class="metric-value">{upgradeCount}</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Correcciones (Bug)</span>
+            <span class="metric-value">{bugCount}</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Mantenimiento</span>
+            <span class="metric-value">{maintCount}</span>
+          </div>
+        </div>
+
+        <div class="panel-section-title">Filtros Avanzados</div>
+        <div class="filter-group">
+          <div class="input-wrapper">
+            <input type="text" id="search-box" class="search-input" placeholder="Buscar por palabra clave..." />
+          </div>
+
+          <div class="input-wrapper">
+            <select id="filter-type" class="select-dropdown">
+              <option value="all">Todos los Tipos</option>
+              <option value="upgrade">Upgrade</option>
+              <option value="bug">Bug</option>
+              <option value="mantenimiento">Mantenimiento</option>
+            </select>
+          </div>
+
+          <div class="input-wrapper">
+            <select id="filter-module" class="select-dropdown">
+              <option value="all">Todos los Módulos</option>
+              {Array.from(new Set(reports.map(r => r.modulo))).map(mod => (
+                <option value={mod.toLowerCase()}>{mod}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content Cards Area -->
+      <section class="content-panel" id="reports-grid">
+        {reports.map(report => (
+          <div 
+            class="report-card" 
+            data-id={report.idStr}
+            data-title={report.title.toLowerCase()}
+            data-desc={report.descriptionFull.toLowerCase()}
+            data-type={report.tipo.toLowerCase()}
+            data-module={report.modulo.toLowerCase()}
+            onclick={`openReportDetails('${report.idStr}')`}
+          >
+            <div class="report-header">
+              <div class="report-meta">
+                <span class="report-id">#{report.idStr}</span>
+                <span class="report-date">{report.date}</span>
+              </div>
+              <span class={`badge badge-${report.tipo.toLowerCase() === 'upgrade' ? 'upgrade' : report.tipo.toLowerCase() === 'bug' ? 'bug' : 'maint'}`}>
+                {report.tipo}
+              </span>
+            </div>
+            <h2 class="report-title">{report.title}</h2>
+            <div class="report-module">{report.modulo}</div>
+            <p class="report-desc">{report.descriptionSnippet}</p>
+            
+            <!-- Hidden full data to be retrieved by client JS -->
+            <template id={`data-${report.idStr}`}>
+              <div class="drawer-content">
+                <div class="drawer-report-id">Informe Técnico #{report.idStr}</div>
+                <div class="drawer-title">{report.title}</div>
+                
+                <div class="drawer-meta-grid">
+                  <div class="drawer-meta-item">
+                    <span class="drawer-meta-label">Fecha</span>
+                    <span class="drawer-meta-value">${report.date}</span>
+                  </div>
+                  <div class="drawer-meta-item">
+                    <span class="drawer-meta-label">Módulo</span>
+                    <span class="drawer-meta-value">${report.modulo}</span>
+                  </div>
+                  <div class="drawer-meta-item">
+                    <span class="drawer-meta-label">Tipo</span>
+                    <span class="drawer-meta-value">${report.tipo}</span>
+                  </div>
+                  <div class="drawer-meta-item">
+                    <span class="drawer-meta-label">Prioridad</span>
+                    <span class="drawer-meta-value">${report.prioridad === 1 ? '1 (Crítica)' : report.prioridad === 2 ? '2 (Alta)' : '3 (Media)'}</span>
+                  </div>
+                </div>
+
+                <div class="drawer-description-box">${report.descriptionFull}</div>
+              </div>
+            </template>
+          </div>
+        ))}
+
+        <div class="empty-state" id="empty-view" style="display: none;">
+          <h3>No se encontraron informes</h3>
+          <p style="margin-top: 0.5rem; font-family: var(--font-serif); font-style: italic;">Prueba a cambiar tus criterios de búsqueda o filtros.</p>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- Interactive Details Drawer -->
+  <div class="drawer-overlay" id="detail-drawer">
+    <div class="drawer-body">
+      <button class="drawer-close">×</button>
+      <div id="drawer-inner-content"></div>
+    </div>
+  </div>
+
+  <script is:inline>
+    // Live Client-side Searching and Filtering
+    const searchBox = document.getElementById('search-box');
+    const filterType = document.getElementById('filter-type');
+    const filterModule = document.getElementById('filter-module');
+    const cards = document.querySelectorAll('.report-card');
+    const emptyView = document.getElementById('empty-view');
+    const statsTotal = document.getElementById('stats-total');
+
+    function applyFilters() {
+      const query = searchBox.value.toLowerCase().trim();
+      const typeVal = filterType.value;
+      const modVal = filterModule.value;
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const title = card.getAttribute('data-title');
+        const desc = card.getAttribute('data-desc');
+        const type = card.getAttribute('data-type');
+        const module = card.getAttribute('data-module');
+
+        const matchesQuery = !query || title.includes(query) || desc.includes(query);
+        const matchesType = typeVal === 'all' || type === typeVal;
+        const matchesModule = modVal === 'all' || module === modVal;
+
+        if (matchesQuery && matchesType && matchesModule) {
+          card.style.display = 'block';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (visibleCount === 0) {
+        emptyView.style.display = 'block';
+      } else {
+        emptyView.style.display = 'none';
+      }
+
+      statsTotal.innerText = visibleCount;
+    }
+
+    if (searchBox) searchBox.addEventListener('input', applyFilters);
+    if (filterType) filterType.addEventListener('change', applyFilters);
+    if (filterModule) filterModule.addEventListener('change', applyFilters);
+
+    // Dynamic drawer detail viewing
+    window.openReportDetails = function(id) {
+      const template = document.getElementById(`data-${id}`);
+      const innerContent = document.getElementById('drawer-inner-content');
+      const drawer = document.getElementById('detail-drawer');
+      
+      if (template && innerContent && drawer) {
+        innerContent.innerHTML = template.innerHTML;
+        drawer.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Lock background scroll
+        // Update URL hash without jumping page
+        history.replaceState(null, null, `#${id}`);
+      }
+    };
+
+    window.closeDrawer = function() {
+      const drawer = document.getElementById('detail-drawer');
+      if (drawer) {
+        drawer.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Unlock scroll
+        // Clear hash smoothly
+        history.replaceState(null, null, ' ');
+      }
+    };
+
+    // Set up drawer event listeners cleanly (prevents deprecated 'event' warnings)
+    const detailDrawer = document.getElementById('detail-drawer');
+    const drawerBody = document.querySelector('.drawer-body');
+    const drawerClose = document.querySelector('.drawer-close');
+
+    if (detailDrawer) {
+      detailDrawer.addEventListener('click', () => window.closeDrawer());
+    }
+    if (drawerBody) {
+      drawerBody.addEventListener('click', (e) => e.stopPropagation());
+    }
+    if (drawerClose) {
+      drawerClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        window.closeDrawer();
+      });
+    }
+
+    // Auto-open via Hash parameter on load (e.g. #0017)
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash;
+      if (hash && hash.length > 1) {
+        const id = hash.substring(1);
+        openReportDetails(id);
+      }
+    });
+  </script>
+</body>
+</html>

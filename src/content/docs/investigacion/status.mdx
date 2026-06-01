@@ -1,0 +1,31 @@
+---
+title: "Estado del Campus"
+description: "Vigilancia en tiempo real de la infraestructura ISAN Academia Centralis."
+template: splash
+---
+
+import CampusStatus from '../../../components/CampusStatus.astro';
+
+# 📡 Centro de Monitoreo Axial
+
+Bienvenido al panel de control de la infraestructura. Desde aquí puedes verificar la sincronización entre el **Puente Soberano** en la nube (Cloud Run) y el **Búnker de Datos** en tu estación de trabajo local (S:).
+
+<CampusStatus />
+
+## Infraestructura de Red
+
+El ecosistema ISAN opera bajo una arquitectura híbrida:
+
+1.  **Capa de Inteligencia (Cloud)**: Procesamiento de modelos generativos vía Vertex AI y balanceo de carga.
+2.  **Capa de Datos (Local)**: Tu bóveda de Obsidian y bases de datos vectoriales PostgreSQL (Speculum Valoris).
+3.  **El Puente (Bridge)**: El conducto seguro que permite a la IA leer tus investigaciones privadas sin comprometer la soberanía de los datos.
+
+### Protocolos Activos
+- **RAG Soberano**: Habilitado (Búsqueda Vectorial SQL).
+- **Scholar Context**: Activo (Sincronizado con perfil de Miguel).
+- **Centinela de Tokenes**: Monitoreando consumo (Capa de Seguridad).
+
+---
+
+> [!TIP]
+> Si el estado del búnker aparece como **OFFLINE**, asegúrate de que el contenedor de Docker `isan_bridge` esté corriendo localmente y el túnel Tailscale esté activo.

@@ -2,68 +2,191 @@
 // NewsletterSubscription.astro
 // Anillo de suscripción: Obsidian -> Web -> Substack -> Blogger
 ---
-<div class="newsletter-module">
+<div class="newsletter-module glass-panel">
+  <div class="terminal-header">
+    <div class="terminal-dots">
+      <span></span><span></span><span></span>
+    </div>
+    <span class="terminal-title">SUBSCRIPCIÓN_PROTOCOLO_ISAN.exe</span>
+  </div>
+  
   <div class="newsletter-content">
     <h3>Suscripción a la Mediateca ISAN</h3>
     <p>Únete a la red de nutrición intelectual. Recibe notificaciones de nuevos ensayos, transmisiones del Ágora y publicaciones cruzadas con nuestro Substack (@isanatelier) y Google Blogger.</p>
     
     <form class="subscription-form" action="https://isanatelier.substack.com/subscribe" method="get" target="_blank">
-      <input type="email" placeholder="Tu correo electrónico..." required class="email-input" />
-      <button type="submit" class="submit-btn">Conectar al Cerebro</button>
+      <div class="input-wrapper">
+        <span class="prompt">></span>
+        <input type="email" placeholder="ingresar_correo_electronico..." required class="email-input" />
+      </div>
+      <button type="submit" class="submit-btn">Ejecutar Conexión</button>
     </form>
     
     <div class="platform-links">
-      <a href="https://isanatelier.substack.com" target="_blank">Substack</a> • 
-      <a href="https://www.isan-atelier.art" target="_blank">Google Blogger</a> • 
-      <a href="/grafo">Grafo Obsidian</a>
+      <div class="link-item">
+        <span class="status-dot"></span>
+        <a href="https://isanatelier.substack.com" target="_blank">Substack</a>
+      </div>
+      <div class="link-item">
+        <span class="status-dot"></span>
+        <a href="https://www.isan-atelier.art" target="_blank">Google Blogger</a>
+      </div>
+      <div class="link-item">
+        <span class="status-dot"></span>
+        <a href="/grafo">Grafo Obsidian</a>
+      </div>
     </div>
   </div>
 </div>
 
 <style>
 .newsletter-module {
-  background: linear-gradient(135deg, rgba(20,20,20,0.8) 0%, rgba(40,40,40,0.8) 100%);
-  border: 1px solid var(--sl-color-accent);
-  border-radius: 12px;
-  padding: 2rem;
-  text-align: center;
-  margin: 3rem 0;
+  padding: 0;
+  overflow: hidden;
+  margin: 4rem 0;
+  border: 1px solid var(--color-glass-border);
 }
+
+.terminal-header {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--color-glass-border);
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.terminal-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.terminal-title {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 1px;
+}
+
+.newsletter-content {
+  padding: 2.5rem;
+  text-align: center;
+}
+
+h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: white;
+}
+
+p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  max-width: 600px;
+  margin: 1rem auto 2rem;
+}
+
 .subscription-form {
   display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 1.5rem;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
 }
-.email-input {
-  padding: 0.75rem 1rem;
-  border-radius: 6px;
-  border: 1px solid rgba(255,255,255,0.2);
-  background: rgba(0,0,0,0.3);
-  color: white;
-  width: 60%;
-  max-width: 300px;
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--color-glass-border);
+  border-radius: 8px;
+  padding: 0 1rem;
+  transition: border-color 0.3s ease;
 }
-.submit-btn {
-  padding: 0.75rem 1.5rem;
-  background: var(--sl-color-accent);
-  color: #000;
-  border: none;
-  border-radius: 6px;
+
+.input-wrapper:focus-within {
+  border-color: var(--color-digital-cyan);
+}
+
+.prompt {
+  color: var(--color-digital-cyan);
+  font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.email-input {
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 1rem 0;
+  width: 100%;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.submit-btn {
+  padding: 1rem 2.5rem;
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 30px;
+  font-weight: 700;
   cursor: pointer;
-  transition: opacity 0.2s;
-}
-.submit-btn:hover {
-  opacity: 0.8;
-}
-.platform-links {
-  margin-top: 1.5rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
   font-size: 0.85rem;
-  color: rgba(255,255,255,0.6);
 }
+
+.submit-btn:hover {
+  background: var(--color-neural-red);
+  color: white;
+  box-shadow: 0 0 30px var(--color-neural-red-glow);
+  transform: translateY(-2px);
+}
+
+.platform-links {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.link-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--color-digital-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 5px var(--color-digital-cyan);
+}
+
 .platform-links a {
-  color: var(--sl-color-accent);
+  color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+}
+
+.platform-links a:hover {
+  color: white;
 }
 </style>

@@ -1,0 +1,258 @@
+---
+// src/components/CampusStatus.astro
+// Monitor de Salud del Ecosistema ISAN
+// Este componente se conecta al ISAN Bridge para verificar el estado del búnker.
+
+const bridgeUrl = import.meta.env.PUBLIC_BRIDGE_URL || 'https://isan-bridge-46085826663.us-central1.run.app';
+---
+
+<div class="campus-status-container glass-panel" id="campus-status-module">
+  <div class="status-header">
+    <div class="status-indicator-group">
+      <div class="pulse-ring" id="bridge-pulse"></div>
+      <span class="status-text" id="bridge-status-label">SINCRONIZANDO...</span>
+    </div>
+    <div class="header-titles">
+      <h3>Protocolo de Vigilancia Axial</h3>
+      <p class="subtitle">Estatus de Sincronización Nube-Búnker</p>
+    </div>
+  </div>
+
+  <div class="status-stats">
+    <div class="stat-box">
+      <span class="stat-label">Puente Cloud Run</span>
+      <span class="stat-value cyan" id="bridge-cloud-val">--</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-label">Búnker Local (S:)</span>
+      <span class="stat-value" id="local-bunker-val">--</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-label">Latencia de Red</span>
+      <span class="stat-value" id="latency-val">--</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-label">Contenedores</span>
+      <span class="stat-value" id="containers-val">--</span>
+    </div>
+  </div>
+
+  <div class="terminal-log" id="status-log">
+    <p class="log-entry">> Inicializando secuencia de diagnóstico...</p>
+  </div>
+  
+  <button class="recheck-btn" id="refresh-status">Re-escaneo de Red</button>
+</div>
+
+<script define:vars={{ bridgeUrl }}>
+  const pulse = document.getElementById('bridge-pulse');
+  const statusLabel = document.getElementById('bridge-status-label');
+  const bridgeCloudVal = document.getElementById('bridge-cloud-val');
+  const localBunkerVal = document.getElementById('local-bunker-val');
+  const latencyVal = document.getElementById('latency-val');
+  const containersVal = document.getElementById('containers-val');
+  const log = document.getElementById('status-log');
+  const refreshBtn = document.getElementById('refresh-status');
+
+  async function checkStatus() {
+    const startTime = Date.now();
+    addLog("Invocando endpoint de salud...");
+    
+    try {
+      // Intentamos conectar con el bridge
+      const response = await fetch(`${bridgeUrl}/docker/status`, {
+        method: 'GET',
+        headers: { 'Accept': 'application/json' }
+      });
+      
+      const endTime = Date.now();
+      const latency = endTime - startTime;
+      latencyVal.innerText = `${latency}ms`;
+
+      if (response.ok) {
+        const data = await response.json();
+        
+        pulse.classList.add('active');
+        statusLabel.innerText = "SISTEMA NOMINAL";
+        bridgeCloudVal.innerText = "ONLINE";
+        
+        if (data.status === 'success') {
+          localBunkerVal.innerText = "CONECTADO";
+          localBunkerVal.classList.add('cyan');
+          containersVal.innerText = data.message.split(' ')[0] + " Activos";
+          addLog(`Búnker detectado: ${data.message}`);
+        } else {
+          localBunkerVal.innerText = "OFFLINE";
+          localBunkerVal.classList.add('red');
+          addLog("⚠️ El Bridge está vivo pero no puede ver el Búnker Local.");
+        }
+      } else {
+        throw new Error("Bridge inalcanzable");
+      }
+    } catch (error) {
+      pulse.classList.remove('active');
+      pulse.classList.add('error');
+      statusLabel.innerText = "FALLO DE ENLACE";
+      bridgeCloudVal.innerText = "OFFLINE";
+      localBunkerVal.innerText = "DESCONOCIDO";
+      addLog(`❌ Error: ${error.message}`);
+    }
+  }
+
+  function addLog(msg) {
+    const p = document.createElement('p');
+    p.className = 'log-entry';
+    p.innerText = `> ${msg}`;
+    log.appendChild(p);
+    log.scrollTop = log.scrollHeight;
+  }
+
+  refreshBtn.addEventListener('click', () => {
+    log.innerHTML = '';
+    checkStatus();
+  });
+
+  // Ejecución inicial
+  checkStatus();
+  // Auto-refresh cada 30 segundos
+  setInterval(checkStatus, 30000);
+</script>
+
+<style>
+  .campus-status-container {
+    padding: 2rem;
+    margin: 2rem 0;
+    border: 1px solid var(--color-glass-border);
+  }
+
+  .status-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--color-glass-border);
+    padding-bottom: 1.5rem;
+  }
+
+  .status-indicator-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 100px;
+  }
+
+  .pulse-ring {
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    position: relative;
+  }
+
+  .pulse-ring.active {
+    background: var(--color-digital-cyan);
+    box-shadow: 0 0 15px var(--color-digital-cyan);
+    animation: pulse-ring 2s infinite;
+  }
+
+  .pulse-ring.error {
+    background: #ff2e2e;
+    box-shadow: 0 0 15px rgba(255, 46, 46, 0.5);
+  }
+
+  .status-text {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .header-titles h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .subtitle {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--color-digital-cyan);
+    opacity: 0.8;
+  }
+
+  .status-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .stat-box {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .stat-label {
+    display: block;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+  }
+
+  .stat-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .stat-value.cyan { color: var(--color-digital-cyan); }
+  .stat-value.red { color: #ff2e2e; }
+
+  .terminal-log {
+    background: rgba(0, 0, 0, 0.5);
+    height: 120px;
+    border-radius: 6px;
+    padding: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75rem;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1.5rem;
+  }
+
+  .log-entry {
+    margin: 0 0 0.25rem 0;
+    color: #00ff41;
+  }
+
+  .recheck-btn {
+    background: transparent;
+    border: 1px solid var(--color-digital-cyan);
+    color: var(--color-digital-cyan);
+    padding: 0.6rem 1.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+
+  .recheck-btn:hover {
+    background: var(--color-digital-cyan);
+    color: black;
+  }
+
+  @keyframes pulse-ring {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 242, 255, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 242, 255, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 242, 255, 0); }
+  }
+</style>
