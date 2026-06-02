@@ -6,17 +6,29 @@
       <description>Últimas 10 notas on ISAN atelier academiae C.A</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>Atrio de Informes Tecnicos</title>
+    <link>https://sede.isan-atelier-academiae.art/informes_tecnicos/</link>
+    <guid>https://sede.isan-atelier-academiae.art/informes_tecnicos/</guid>
+    <description><![CDATA[ Bitacora Tecnica ISAN Centro de registro de sucesos tecnicos de la infraestructura. ]]></description>
+    <pubDate>Mon, 01 Jun 2026 22:17:43 GMT</pubDate>
+  </item><item>
+    <title>Informe #0017 - Mediateca SFT</title>
+    <link>https://sede.isan-atelier-academiae.art/informes_tecnicos/INFORME_0017_Mediateca_2026-06-01</link>
+    <guid>https://sede.isan-atelier-academiae.art/informes_tecnicos/INFORME_0017_Mediateca_2026-06-01</guid>
+    <description><![CDATA[ Informe Tecnico #0017 CampoValorID17Fecha2026-06-01 18:00ModuloMediateca SFTTipoUpgradePrioridad2 (Alta)StatusCompletado Descripcion Rediseño integral de la interfaz secundaria para la evolución del antiguo widget “Nodo Salamanca” hacia el nuevo módulo interactivo DIARIUM // DAILY NEWS en la platafo... ]]></description>
+    <pubDate>Mon, 01 Jun 2026 04:00:00 GMT</pubDate>
+  </item><item>
+    <title>Informe #0018 - Libri VI Daemonum</title>
+    <link>https://sede.isan-atelier-academiae.art/informes_tecnicos/INFORME_0018_Libri_2026-06-01</link>
+    <guid>https://sede.isan-atelier-academiae.art/informes_tecnicos/INFORME_0018_Libri_2026-06-01</guid>
+    <description><![CDATA[ Informe Tecnico #0018 CampoValorID18Fecha2026-06-01 18:15ModuloLibri VI DaemonumTipoUpgradePrioridad2 (Alta)StatusCompletado Descripcion Consolidación arquitectónica y registro de la aplicación Libri VI Daemonum, destinada a la gestión, lectura e indexación inteligente de Grimorios y Textos Canónico... ]]></description>
+    <pubDate>Mon, 01 Jun 2026 04:00:00 GMT</pubDate>
+  </item><item>
     <title>ISAN atelier academiae C.A.</title>
     <link>https://sede.isan-atelier-academiae.art/Configuraci%C3%B3n_Portada</link>
     <guid>https://sede.isan-atelier-academiae.art/Configuraci%C3%B3n_Portada</guid>
     <description><![CDATA[ Búnker Soberano y Consola de Sincronización Axial ]]></description>
     <pubDate>Sun, 24 May 2026 11:03:59 GMT</pubDate>
-  </item><item>
-    <title>Atrio de Informes Tecnicos</title>
-    <link>https://sede.isan-atelier-academiae.art/informes_tecnicos/</link>
-    <guid>https://sede.isan-atelier-academiae.art/informes_tecnicos/</guid>
-    <description><![CDATA[ Bitacora Tecnica ISAN Centro de registro de sucesos tecnicos de la infraestructura. ]]></description>
-    <pubDate>Fri, 01 May 2026 17:37:25 GMT</pubDate>
   </item><item>
     <title>Bunker Soberano - Indice de Conocimiento</title>
     <link>https://sede.isan-atelier-academiae.art/bunker_soberano/</link>
@@ -52,18 +64,6 @@
     <link>https://sede.isan-atelier-academiae.art/bunker_soberano/proyectos/Clavis_arcae_navigantis</link>
     <guid>https://sede.isan-atelier-academiae.art/bunker_soberano/proyectos/Clavis_arcae_navigantis</guid>
     <description><![CDATA[ Ficha Tecnica CampoValorCategoriaProyectoProyectodissectiones_logiFragmentos19FuenteS:\dissectiones_logi\Departamentos_Operativos\Departamentum Arca Hermetica\Clavis_arcae_navigantis.pySincronizado2026-05-01 02:24 Contenido ============================================== # Bloque 0 — INITIUM (Fundaci... ]]></description>
-    <pubDate>Fri, 01 May 2026 04:00:00 GMT</pubDate>
-  </item><item>
-    <title>GraecaClassica_Universum.py</title>
-    <link>https://sede.isan-atelier-academiae.art/bunker_soberano/proyectos/GraecaClassica_Universum</link>
-    <guid>https://sede.isan-atelier-academiae.art/bunker_soberano/proyectos/GraecaClassica_Universum</guid>
-    <description><![CDATA[ Ficha Tecnica CampoValorCategoriaProyectoProyectodissectiones_logiFragmentos38FuenteS:\dissectiones_logi\Departamentos_Operativos\Departamentum Linguistica Graeca Classica\GraecaClassica_Universum.pySincronizado2026-05-01 02:23 Contenido --- BLOQUE I: ENCABEZADO Y CONFIGURACIÓN INICIAL --- # Script:... ]]></description>
-    <pubDate>Fri, 01 May 2026 04:00:00 GMT</pubDate>
-  </item><item>
-    <title>NumerologiaGematria_Universum.py</title>
-    <link>https://sede.isan-atelier-academiae.art/bunker_soberano/proyectos/NumerologiaGematria_Universum</link>
-    <guid>https://sede.isan-atelier-academiae.art/bunker_soberano/proyectos/NumerologiaGematria_Universum</guid>
-    <description><![CDATA[ Ficha Tecnica CampoValorCategoriaProyectoProyectodissectiones_logiFragmentos5FuenteS:\dissectiones_logi\NumerologiaGematria_Universum\NumerologiaGematria_Universum.pySincronizado2026-05-01 02:25 Contenido ========================================================== # == BLOQUE I: Initium Codificationi... ]]></description>
     <pubDate>Fri, 01 May 2026 04:00:00 GMT</pubDate>
   </item>
     </channel>
