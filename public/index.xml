@@ -24,6 +24,12 @@
     <description><![CDATA[ Informe Tecnico #0018 CampoValorID18Fecha2026-06-01 18:15ModuloLibri VI DaemonumTipoUpgradePrioridad2 (Alta)StatusCompletado Descripcion Consolidación arquitectónica y registro de la aplicación Libri VI Daemonum, destinada a la gestión, lectura e indexación inteligente de Grimorios y Textos Canónico... ]]></description>
     <pubDate>Mon, 01 Jun 2026 04:00:00 GMT</pubDate>
   </item><item>
+    <title>Informe #0019 - Resolucion Bitacora Academica</title>
+    <link>https://sede.isan-atelier-academiae.art/informes_tecnicos/INFORME_0019_Bitacora_2026-06-01</link>
+    <guid>https://sede.isan-atelier-academiae.art/informes_tecnicos/INFORME_0019_Bitacora_2026-06-01</guid>
+    <description><![CDATA[ Informe Tecnico #0019 CampoValorID19Fecha2026-06-01 22:00ModuloMediateca SFT (Astro / Quartz)TipoBug (Critical Fix)Prioridad1 (Critica)StatusCompletado Descripcion Resolución del bucle de redirección infinita y de la desconexión de red (ERR_CONNECTION_RESET) al intentar acceder al módulo de la Bitác... ]]></description>
+    <pubDate>Mon, 01 Jun 2026 04:00:00 GMT</pubDate>
+  </item><item>
     <title>ISAN atelier academiae C.A.</title>
     <link>https://sede.isan-atelier-academiae.art/Configuraci%C3%B3n_Portada</link>
     <guid>https://sede.isan-atelier-academiae.art/Configuraci%C3%B3n_Portada</guid>
@@ -58,12 +64,6 @@
     <link>https://sede.isan-atelier-academiae.art/bunker_soberano/proyectos/ClavisUmbrae</link>
     <guid>https://sede.isan-atelier-academiae.art/bunker_soberano/proyectos/ClavisUmbrae</guid>
     <description><![CDATA[ Ficha Tecnica CampoValorCategoriaProyectoProyectodissectiones_logiFragmentos5FuenteS:\dissectiones_logi\Departamentos_Operativos\Departamentum Arcus Responsorum Sigillum Umbrae\ClavisUmbrae.pySincronizado2026-05-01 02:25 Contenido ============================================== # Bloque 0 — Proemio (... ]]></description>
-    <pubDate>Fri, 01 May 2026 04:00:00 GMT</pubDate>
-  </item><item>
-    <title>Clavis_arcae_navigantis.py</title>
-    <link>https://sede.isan-atelier-academiae.art/bunker_soberano/proyectos/Clavis_arcae_navigantis</link>
-    <guid>https://sede.isan-atelier-academiae.art/bunker_soberano/proyectos/Clavis_arcae_navigantis</guid>
-    <description><![CDATA[ Ficha Tecnica CampoValorCategoriaProyectoProyectodissectiones_logiFragmentos19FuenteS:\dissectiones_logi\Departamentos_Operativos\Departamentum Arca Hermetica\Clavis_arcae_navigantis.pySincronizado2026-05-01 02:24 Contenido ============================================== # Bloque 0 — INITIUM (Fundaci... ]]></description>
     <pubDate>Fri, 01 May 2026 04:00:00 GMT</pubDate>
   </item>
     </channel>
