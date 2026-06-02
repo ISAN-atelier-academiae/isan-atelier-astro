@@ -22,7 +22,7 @@ export default defineConfig({
           label: 'Bóveda de Quartz (Aprobado)',
           items: [
             { label: '3 Biblioteca', link: '/investigacion/biblioteca/' },
-            { label: 'Bitácora Académica', link: '/Bitácora-Académica.html' },
+            { label: 'Bitácora Académica', link: '/Bitacora-Academica.html' },
             { label: 'Curia Cambii IDX', link: '/Curia-Cambii-IDX.html' },
             { label: 'DOSSIER PROFESIONAL', link: '/DOSSIER-PROFESIONAL.html' },
             { label: 'ISAN atelier C.A', link: '/ISAN-atelier-academiae-C.A.html' },
